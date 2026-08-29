@@ -130,12 +130,24 @@ capital = 596
 	add_opinion_modifier = { target = CHI modifier = former_suzerain }
 
 	set_popularities = {
-		democratic = 14
-		communism = 42
-		fascism = 0
-		neutrality = 40
-		nationalist = 4
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 14
+		##communism = 42
+		##fascism = 0
+		##neutrality = 40
+		##nationalist = 4
+	##}
 	set_politics = {
 		ruling_party = communism
 		last_election = "1997.5.18"

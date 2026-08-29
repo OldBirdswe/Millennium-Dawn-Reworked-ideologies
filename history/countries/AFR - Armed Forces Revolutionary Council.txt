@@ -99,14 +99,26 @@ capital = 357
 	}
 
 	set_popularities = {
-		democratic = 0.0
-		communism = 0.0
-		fascism = 0.0
-		neutrality = 0.0
-		nationalist = 100.0
+		communism = 0
+		socialism = 0
+		social_democracy = 0
+		liberalism = 0
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 0
+		populism = 35
+		nationalism = 65
+		monarchism = 0
 	}
+	#set_popularities = {
+		###democratic = 0.0
+		###communism = 0.0
+		###fascism = 0.0
+		###neutrality = 0.0
+		###nationalist = 100.0
+	###}
 	set_politics = {
-		ruling_party = nationalist
+		ruling_party = nationalism
 		last_election = "1999.1.1"
 		election_frequency = 48
 		elections_allowed = no
@@ -128,7 +140,7 @@ capital = 357
 	create_country_leader = {
 		name = "Maj. Johnny Koroma"
 		picture = "johnny_koroma.dds"
-		ideology = Nat_Autocracy
+		ideology = fascist
 		traits = {
 			nationalist_Nat_Autocracy
 		}

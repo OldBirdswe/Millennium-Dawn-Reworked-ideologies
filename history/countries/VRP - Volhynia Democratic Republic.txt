@@ -183,12 +183,24 @@ capital = 1110
 	sort_influence = yes
 
 	set_popularities = {
-		democratic = 10.0
-		communism = 0.0
-		fascism = 0.0
-		neutrality = 0.0
-		nationalist = 90.0
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 10.0
+		##communism = 0.0
+		##fascism = 0.0
+		##neutrality = 0.0
+		##nationalist = 90.0
+	##}
 	set_politics = {
 		ruling_party = nationalist
 		last_election = "2016.12.11"

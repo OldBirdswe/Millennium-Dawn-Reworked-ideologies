@@ -289,12 +289,24 @@ capital = 631
 	add_to_array = { IND.influence_targets = MAY }
 
 	set_popularities = {
-		democratic = 49.6
-		communism = 38.3
-		fascism = 0.0
-		neutrality = 10.7
-		nationalist = 1.4
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 49.6
+		##communism = 38.3
+		##fascism = 0.0
+		##neutrality = 10.7
+		##nationalist = 1.4
+	##}
 	set_politics = {
 		ruling_party = democratic
 		last_election = "1999.4.1"

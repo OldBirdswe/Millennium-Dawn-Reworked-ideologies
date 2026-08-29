@@ -59,12 +59,24 @@ capital = 80
 	set_country_flag = dynamic_rebel_flag
 
 	set_popularities = {
-		democratic = 24.1
-		communism = 7.0
-		fascism = 0.0
-		neutrality = 22.8
-		nationalist = 46.1
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 24.1
+		##communism = 7.0
+		##fascism = 0.0
+		##neutrality = 22.8
+		##nationalist = 46.1
+	##}
 	set_politics = {
 		ruling_party = nationalist
 		last_election = "1996.4.21"

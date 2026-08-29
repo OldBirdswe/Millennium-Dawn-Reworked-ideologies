@@ -98,12 +98,36 @@ capital = 1115
 	add_to_array = { influence_array_val = 9 }
 	sort_influence = yes
 
-	set_popularities = {
-		democratic = 52
-		communism = 4.0
-		neutrality = 30.2
-		nationalist = 13.8
+		set_popularities = {
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+		#	set_popularities = {
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
+	}
+	#set_popularities = {
+		##democratic = 52
+		##communism = 4.0
+		##neutrality = 30.2
+		##nationalist = 13.8
+	##}
 	set_politics = {
 		ruling_party = democratic
 		last_election = "1999.3.1"

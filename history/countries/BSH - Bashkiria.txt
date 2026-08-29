@@ -72,12 +72,24 @@ capital = 664
 	set_variable = { var = population_tax_rate value = 27 }
 
 	set_popularities = {
-		democratic = 8
-		communism = 70.2
-		fascism = 0.0
-		neutrality = 12
-		nationalist = 9.8
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		###democratic = 8
+		###communism = 70.2
+		###fascism = 0.0
+		###neutrality = 12
+		###nationalist = 9.8
+	###}
 	set_politics = {
 		ruling_party = communism
 		last_election = "1998.9.19"

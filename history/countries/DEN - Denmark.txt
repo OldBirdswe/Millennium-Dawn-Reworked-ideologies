@@ -640,12 +640,24 @@ capital = 4
 	add_opinion_modifier = { target = HOL modifier = large_commercial_relations }
 
 	set_popularities = {
-		democratic = 68.9
-		communism = 2.4
-		fascism = 0.0
-		neutrality = 20.8
-		nationalist = 7.9
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		###democratic = 68.9
+		###communism = 2.4
+		###fascism = 0.0
+		###neutrality = 20.8
+		###nationalist = 7.9
+	###}
 	set_politics = {
 
 		ruling_party = democratic

@@ -117,14 +117,26 @@ capital = 1214
 	set_variable = { literacy_rate = 0.685 }
 
 	set_popularities = {
-		democratic = 75
-		fascism = 0
 		communism = 0
-		neutrality = 25
-		nationalist = 0
+		socialism = 0
+		social_democracy = 70
+		liberalism = 10
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 20
+		populism = 0
+		nationalism = 0
+		monarchism = 0
 	}
+	#set_popularities = {
+		###democratic = 75
+		###fascism = 0
+		###communism = 0
+		###neutrality = 25
+		###nationalist = 0
+	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = social_democracy
 		last_election = "1998.2.21"
 		election_frequency = 60
 		elections_allowed = yes

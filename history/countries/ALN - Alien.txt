@@ -13,10 +13,22 @@
 		EH_chimera_units = 1
 	}
 	set_popularities = {
-		nationalist = 100.0
+		communism = 0
+		socialism = 0
+		social_democracy = 0
+		liberalism = 0
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 0
+		populism = 0
+		nationalism = 0
+		monarchism = 100
 	}
+	#set_popularities = {
+		###nationalist = 100.0
+	###}
 	set_politics = {
-		ruling_party = nationalist
+		ruling_party = monarchism
 		last_election = "1999.1.30"
 		elections_allowed = no
 	}
@@ -31,7 +43,7 @@
 		name = "Superordinate"
 		picture = "Superordinate.dds"
 		expire = "2050.1.1"
-		ideology = Monarchist
+		ideology = monarchy
 		traits = {
 			nationalist_Monarchist
 			army_general

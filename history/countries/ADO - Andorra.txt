@@ -194,14 +194,26 @@ capital = 945
 	set_variable = { var = overall_productivity value = 765 }
 
 	set_popularities = {
-		democratic = 76.3
-		communism = 0.0
-		fascism = 0.0
-		neutrality = 23.7
-		nationalist = 0.0
+		communism = 0
+		socialism = 13
+		social_democracy = 30
+		liberalism = 40
+		agrarianism = 3
+		libertarianism = 0
+		conservatism = 14
+		populism = 0
+		nationalism = 0
+		monarchism = 0
 	}
+	#set_popularities = {
+		###democratic = 76.3
+		###communism = 0.0
+		###fascism = 0.0
+		###neutrality = 23.7
+		###nationalist = 0.0
+	###}
 	set_politics = { #Should set Elections to March 4, 2001
-		ruling_party = democratic
+		ruling_party = conservatism
 		last_election = "1997.3.4"
 		election_frequency = 48
 		elections_allowed = yes
@@ -225,7 +237,7 @@ capital = 945
 	create_country_leader = {
 		name = "Marc Forné Molné"
 		picture = "marc_forne_molne.dds"
-		ideology = liberalism
+		ideology = liberal_conservatives
 		traits = {
 			western_liberalism
 			career_politician

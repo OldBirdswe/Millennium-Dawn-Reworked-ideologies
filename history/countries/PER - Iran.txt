@@ -988,12 +988,36 @@ capital = 405
 	add_to_array = { PER.investment_targets = TUN } # Tunisia
 
 
-	set_popularities = {
-		communism = 79.3
-		democratic = 6.5
-		neutrality = 12.4
-		nationalist = 1.8
+		set_popularities = {
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+		#	set_popularities = {
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
+	}
+	#set_popularities = {
+		##communism = 79.3
+		##democratic = 6.5
+		##neutrality = 12.4
+		##nationalist = 1.8
+	##}
 	set_politics = {
 		ruling_party = communism
 		last_election = "1997.6.8"

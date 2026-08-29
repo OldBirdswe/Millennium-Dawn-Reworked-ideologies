@@ -56,12 +56,24 @@ capital = 1094
 	inherit_technology = BLR
 
 	set_popularities = {
-		democratic = 0.0
-		communism = 57.5
-		fascism = 0.0
-		neutrality = 10.0
-		nationalist = 32.5
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 0.0
+		##communism = 57.5
+		##fascism = 0.0
+		##neutrality = 10.0
+		##nationalist = 32.5
+	##}
 	set_politics = {
 		ruling_party = communism
 		last_election = "1998.2.26"

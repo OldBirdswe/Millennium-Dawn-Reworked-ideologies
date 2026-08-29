@@ -598,14 +598,26 @@ capital = 742
 	reverse_add_opinion_modifier = { target = NZL modifier = ANZUS_partial }
 
 	set_popularities = {
-		democratic = 84.0
-		communism = 0.6
-		fascism = 0.0
-		neutrality = 6.9
-		nationalist = 8.5
+		communism = 0
+		socialism = 1
+		social_democracy = 39
+		liberalism = 5
+		agrarianism = 2
+		libertarianism = 0
+		conservatism = 40
+		populism = 8
+		nationalism = 0
+		monarchism = 0
 	}
+	#set_popularities = {
+		###democratic = 84.0
+		###communism = 0.6
+		###fascism = 0.0
+		###neutrality = 6.9
+		###nationalist = 8.5
+	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = conservatism
 		last_election = "1998.10.3"
 		election_frequency = 36
 		elections_allowed = yes

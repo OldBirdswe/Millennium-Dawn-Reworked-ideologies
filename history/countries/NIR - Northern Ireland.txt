@@ -152,12 +152,24 @@ capital = 17
 	set_variable = { maritime_industry_opinion = 60 }
 
 	set_popularities = {
-		democratic = 49.7
-		communism = 14.4
-		fascism = 0.0
-		neutrality = 35.9
-		nationalist = 0.0
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 49.7
+		##communism = 14.4
+		##fascism = 0.0
+		##neutrality = 35.9
+		##nationalist = 0.0
+	##}
 	set_politics = {
 		ruling_party = democratic
 		last_election = "1997.6.6"

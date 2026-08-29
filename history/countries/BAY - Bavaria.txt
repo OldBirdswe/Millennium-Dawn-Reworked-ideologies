@@ -79,12 +79,24 @@ capital = 43
 	inherit_technology = GER
 
 	set_popularities = {
-		democratic = 83.3
-		fascism = 0
-		communism = 0.6
-		neutrality = 12.3
-		nationalist = 3.8
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		###democratic = 83.3
+		###fascism = 0
+		###communism = 0.6
+		###neutrality = 12.3
+		###nationalist = 3.8
+	###}
 	set_politics = {
 		ruling_party = democratic
 		last_election = "1998.10.27"

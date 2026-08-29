@@ -138,12 +138,24 @@ capital = 516
 	add_opinion_modifier = { target = SIA modifier = large_commercial_relations }
 
 	set_popularities = {
-		democratic = 10.0
-		communism = 85
-		fascism = 0.0
-		neutrality = 5.0
-		nationalist = 0.0
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 10.0
+		##communism = 85
+		##fascism = 0.0
+		##neutrality = 5.0
+		##nationalist = 0.0
+	##}
 	set_politics = {
 		ruling_party = communism
 		last_election = "1932.11.8"

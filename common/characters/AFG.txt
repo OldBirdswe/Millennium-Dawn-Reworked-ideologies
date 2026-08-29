@@ -19,7 +19,7 @@ characters = {
 			logistics_skill = 4
 		}
 		country_leader = {
-			ideology = Neutral_Muslim_Brotherhood
+			ideology = populist
 			traits = {
 				guerrilla_leader
 				neutrality_Neutral_Muslim_Brotherhood

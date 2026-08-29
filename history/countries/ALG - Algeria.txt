@@ -287,14 +287,26 @@ set_research_slots = 4
 	}
 
 	set_popularities = {
-		democratic = 25.7
-		communism = 46.0
-		fascism = 0.1
-		neutrality = 28.2
-		nationalist = 0.0
+		communism = 1
+		socialism = 1
+		social_democracy = 5
+		liberalism = 34
+		agrarianism = 4
+		libertarianism = 1
+		conservatism = 12
+		populism = 18
+		nationalism = 24
+		monarchism = 0
 	}
+	#set_popularities = {
+		###democratic = 25.7
+		###communism = 46.0
+		###fascism = 0.1
+		###neutrality = 28.2
+		###nationalist = 0.0
+	###}
 	set_politics = {
-		ruling_party = communism
+		ruling_party = conservatism
 		last_election = "1999.4.15"
 		election_frequency = 60
 		elections_allowed = yes
@@ -343,7 +355,7 @@ set_research_slots = 4
 		name = "Abdelaziz Bouteflika"
 		picture = "ALG_Abdelaziz_Bouteflika.dds"
 		expire = "2019.4.2"
-		ideology = Autocracy
+		ideology = nationalist
 		traits = {
 			emerging_Autocracy
 		}

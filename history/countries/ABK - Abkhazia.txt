@@ -143,12 +143,24 @@ capital = 706
 		elections_allowed = yes
 	}
 	set_popularities = {
-		democratic = 9.0 #Western
-		communism = 66.0 #Emerging
-		fascism = 0.0 #Salafist
-		neutrality = 25.0 #Non Aligned
-		nationalist = 0.0 #Nationalist
+		communism = 51
+		socialism = 9
+		social_democracy = 0.0
+		liberalism = 0.0
+		agrarianism = 0.0
+		libertarianism = 0.0
+		conservatism = 25
+		populism = 0.0
+		nationalism = 15
+		monarchism = 0.0
 	}
+	#set_popularities = {
+		###democratic = 9.0 #Western
+		###communism = 66.0 #Emerging
+		###fascism = 0.0 #Salafist
+		###neutrality = 25.0 #Non Aligned
+		###nationalist = 0.0 #Nationalist
+	###}
 
 	start_politics_input = yes
 
@@ -163,7 +175,7 @@ capital = 706
 	create_country_leader = {
 		name = "Vladislav Ardzinba"
 		picture = "Vladislav_Ardzinba.dds"
-		ideology = Communist-State
+		ideology = stalinist
 		traits = {
 			emerging_Communist-State
 		}

@@ -286,12 +286,24 @@ capital = 124
 	set_variable = { var_reactor_material_stockpile = 2500 }
 
 	set_popularities = {
-		democratic = 82.7
-		communism = 9.0
-		fascism = 0.0
-		neutrality = 3.9
-		nationalist = 4.4
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 82.7
+		##communism = 9.0
+		##fascism = 0.0
+		##neutrality = 3.9
+		##nationalist = 4.4
+	##}
 	set_politics = {
 		ruling_party = democratic
 		last_election = "1996.9.14"

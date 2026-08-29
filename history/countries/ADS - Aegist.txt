@@ -144,14 +144,26 @@ capital = 17
 	set_variable = { intelligence_community = 60 }
 
 	set_popularities = {
-		democratic = 0
 		communism = 0
-		fascism = 0
-		neutrality = 0
-		nationalist = 100
+		socialism = 0
+		social_democracy = 0
+		liberalism = 0
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 0
+		populism = 0
+		nationalism = 100
+		monarchism = 0
 	}
+	#set_popularities = {
+		###democratic = 0
+		###communism = 0
+		###fascism = 0
+		###neutrality = 0
+		###nationalist = 100
+	###}
 	set_politics = {
-		ruling_party = nationalist
+		ruling_party = nationalism
 		last_election = "1997.6.6"
 		election_frequency = 48
 		elections_allowed = no

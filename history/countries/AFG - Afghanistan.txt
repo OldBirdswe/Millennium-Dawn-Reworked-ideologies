@@ -174,12 +174,24 @@ capital = 411
 		elections_allowed = yes
 	}
 	set_popularities = {
-		democratic = 37.0 #Western
-		communism = 6.0 #Emerging
-		fascism = 13.0 #Salafist
-		neutrality = 39.0 #Neutrality
-		nationalist = 5.0 #Nationalist
+		communism = 0
+		socialism = 0
+		social_democracy = 2
+		liberalism = 9
+		agrarianism = 1
+		libertarianism = 1
+		conservatism = 14
+		populism = 33
+		nationalism = 23
+		monarchism = 17
 	}
+	#set_popularities = {
+		###democratic = 37.0 #Western
+		###communism = 6.0 #Emerging
+		###fascism = 13.0 #Salafist
+		###neutrality = 39.0 #Neutrality
+		###nationalist = 5.0 #Nationalist
+	###}
 
 	start_politics_input = yes
 

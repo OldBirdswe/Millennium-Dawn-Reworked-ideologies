@@ -225,12 +225,24 @@ oob = "GENERIC_OOB"
 	set_variable = { overall_productivity = 789 }
 
 	set_popularities = {
-		democratic = 33.3
-		communism = 36.9
-		fascism = 0.0
-		neutrality = 29.7
-		nationalist = 0.1
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 33.3
+		##communism = 36.9
+		##fascism = 0.0
+		##neutrality = 29.7
+		##nationalist = 0.1
+	##}
 	set_politics = {
 		ruling_party = communism
 		last_election = "1996.12.11"

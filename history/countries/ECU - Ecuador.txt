@@ -220,12 +220,24 @@ capital = 906
 	reverse_add_opinion_modifier = { target = URG modifier = spanish_speaking }
 
 	set_popularities = {
-		democratic = 38.0
-		communism = 6.0
-		fascism = 0.0
-		neutrality = 36.5
-		nationalist = 19.5
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 38.0
+		##communism = 6.0
+		##fascism = 0.0
+		##neutrality = 36.5
+		##nationalist = 19.5
+	##}
 	set_politics = {
 		ruling_party = democratic
 		last_election = "1997.12.7"

@@ -79,12 +79,24 @@ capital = 922
 	set_variable = { var = child_soldiers_recruitment value = 10 }
 
 	set_popularities = {
-		democratic = 0.0
-		communism = 0.0
-		fascism = 0.0
-		neutrality = 100.0
-		nationalist = 0.0
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		###democratic = 0.0
+		###communism = 0.0
+		###fascism = 0.0
+		###neutrality = 100.0
+		###nationalist = 0.0
+	###}
 	set_politics = {
 		ruling_party = neutrality
 		last_election = "1999.2.14"

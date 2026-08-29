@@ -429,14 +429,26 @@ capital = 453
 	reverse_add_opinion_modifier = { target = URG modifier = spanish_speaking }
 
 	set_popularities = {
-		democratic = 63.0
-		communism = 2.0
-		fascism = 0.0
-		neutrality = 35.0
-		nationalist = 0.0
+		communism = 1
+		socialism = 2
+		social_democracy = 35
+		liberalism = 14
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 14
+		populism = 34
+		nationalism = 0
+		monarchism = 0
 	}
+	#set_popularities = {
+		###democratic = 63.0
+		###communism = 2.0
+		###fascism = 0.0
+		###neutrality = 35.0
+		###nationalist = 0.0
+	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = social_democracy
 		last_election = "1999.10.24"
 		election_frequency = 48
 		elections_allowed = yes
@@ -461,7 +473,7 @@ capital = 453
 	create_country_leader = {
 		name = "Fernando de la Rua"
 		picture = "Fernando_de_la_Rua.dds"
-		ideology = socialism
+		ideology = social_democrat
 		traits = {
 			western_socialism
 		}

@@ -136,14 +136,26 @@ oob = "GENERIC_OOB"
 	reverse_add_opinion_modifier = { target = GAH modifier = english_speaking }
 
 	set_popularities = {
-		democratic = 27.3
-		communism = 0.0
-		fascism = 0.0
-		neutrality = 72.7
-		nationalist = 0.0
+		communism = 0
+		socialism = 0
+		social_democracy = 73
+		liberalism = 9
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 18
+		populism = 0
+		nationalism = 0
+		monarchism = 0
 	}
+	#set_popularities = {
+		###democratic = 27.3
+		###communism = 0.0
+		###fascism = 0.0
+		###neutrality = 72.7
+		###nationalist = 0.0
+	###}
 	set_politics = {
-		ruling_party = neutrality
+		ruling_party = social_democracy
 		last_election = "1999.3.9"
 		election_frequency = 60
 		elections_allowed = yes
@@ -164,7 +176,7 @@ oob = "GENERIC_OOB"
 	create_country_leader = {
 		name = "Lester Bird"
 		picture = "Lester_Bird.dds"
-		ideology = neutral_Social
+		ideology = social_democrat
 		traits = {
 			neutrality_neutral_Social
 		}

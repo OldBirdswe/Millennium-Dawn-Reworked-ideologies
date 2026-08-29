@@ -212,12 +212,24 @@ capital = 709
 	set_variable = { var = population_tax_rate value = 20 }
 
 	set_popularities = {
-		democratic = 27.7
-		communism = 35.2
-		fascism = 0.0
-		neutrality = 26.6
-		nationalist = 10.5
+		communism = 14
+		socialism = 3
+		social_democracy = 3
+		liberalism = 25
+		agrarianism = 2
+		libertarianism = 1
+		conservatism = 27
+		populism = 3
+		nationalism = 14
+		monarchism = 8
 	}
+	#set_popularities = {
+		###democratic = 27.7
+		###communism = 35.2
+		###fascism = 0.0
+		###neutrality = 26.6
+		###nationalist = 10.5
+	###}
 	add_opinion_modifier = {
 		target = GEO
 		modifier = historic_friends
@@ -251,7 +263,7 @@ capital = 709
 		modifier = historic_friends
 	}
 	set_politics = {
-		ruling_party = communism
+		ruling_party = conservatism
 		last_election = "1998.3.16"
 		election_frequency = 59
 		elections_allowed = yes

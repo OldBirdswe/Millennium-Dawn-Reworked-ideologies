@@ -167,14 +167,26 @@ capital = 137
 	set_variable = { overall_productivity = 682 }
 
 	set_popularities = {
-		democratic = 97.4
-		communism = 0.0
-		fascism = 0.0
-		neutrality = 2.6
-		nationalist = 0.0
+		communism = 0
+		socialism = 0
+		social_democracy = 45
+		liberalism = 6
+		agrarianism = 3
+		libertarianism = 0
+		conservatism = 43
+		populism = 1
+		nationalism = 1
+		monarchism = 1
 	}
+	#set_popularities = {
+		###democratic = 97.4
+		###communism = 0.0
+		###fascism = 0.0
+		###neutrality = 2.6
+		###nationalist = 0.0
+	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = social_democracy
 		last_election = "1997.6.29"
 		election_frequency = 48
 		elections_allowed = yes
@@ -195,7 +207,7 @@ capital = 137
 	create_country_leader = {
 		name = "Ilir Meta"
 		picture = "ilir_meta.dds"
-		ideology = socialism
+		ideology = social_democrat
 		traits = {
 			western_socialism
 		}

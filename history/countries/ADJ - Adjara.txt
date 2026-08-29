@@ -66,14 +66,26 @@ capital = 466
 	sort_influence = yes
 
 	set_popularities = {
-		democratic = 100.0
-		communism = 0.0
-		fascism = 0.0
-		neutrality = 0.0
-		nationalist = 0.0
+		communism = 0
+		socialism = 1
+		social_democracy = 20
+		liberalism = 33
+		agrarianism = 26
+		libertarianism = 12
+		conservatism = 1
+		populism = 3
+		nationalism = 4
+		monarchism = 0.0
 	}
+	#set_popularities = {
+		###democratic = 100.0
+		###communism = 0.0
+		###fascism = 0.0
+		###neutrality = 0.0
+		###nationalist = 0.0
+	###}
 	set_politics = {
-		ruling_party = communism
+		ruling_party = conservatism
 		last_election = "2000.1.1"
 		election_frequency = 60
 		elections_allowed = yes
@@ -92,7 +104,7 @@ capital = 466
 	create_country_leader = {
 		name = "Aslan Abashidze"
 		picture = "gfx/leaders/generic_politicians/white_004.dds"
-		ideology = Autocracy
+		ideology = national_conservatives
 		traits = {
 			emerging_Autocracy
 		}

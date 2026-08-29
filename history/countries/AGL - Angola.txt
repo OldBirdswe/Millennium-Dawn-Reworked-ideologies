@@ -139,12 +139,24 @@ capital = 298
 	}
 
 	set_popularities = {
-		democratic = 24.5
-		communism = 69.8
-		fascism = 0.0
-		neutrality = 4.7
-		nationalist = 1.0
+		communism = 15
+		socialism = 56
+		social_democracy = 3
+		liberalism = 1
+		agrarianism = 1
+		libertarianism = 0
+		conservatism = 23
+		populism = 0
+		nationalism = 1
+		monarchism = 0
 	}
+	#set_popularities = {
+		###democratic = 24.5
+		###communism = 69.8
+		###fascism = 0.0
+		###neutrality = 4.7
+		###nationalist = 1.0
+	###}
 	set_politics = {
 		ruling_party = communism
 		last_election = "1997.9.30"

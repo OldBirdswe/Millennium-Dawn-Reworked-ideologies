@@ -130,12 +130,24 @@ capital = 861
 	set_variable = { overall_productivity = 450 }
 
 	set_popularities = {
-		democratic = 99.4
-		communism = 0.2
-		fascism = 0.0
-		neutrality = 0.1
-		nationalist = 0.3
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		###democratic = 99.4
+		###communism = 0.2
+		###fascism = 0.0
+		###neutrality = 0.1
+		###nationalist = 0.3
+	###}
 	set_politics = {
 		ruling_party = democratic
 		last_election = "1996.8.16"

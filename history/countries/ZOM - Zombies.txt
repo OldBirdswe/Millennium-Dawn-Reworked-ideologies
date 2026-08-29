@@ -13,9 +13,33 @@ set_technology = {
 	zombietech = 1
 }
 
-set_popularities = {
-	nationalist = 100.0
-}
+	set_popularities = {
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
+	}
+		#	set_popularities = {
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
+	}
+	#set_popularities = {
+	##nationalist = 100.0
+##}
 set_politics = {
 	ruling_party = nationalist
 	last_election = "100.5.12"

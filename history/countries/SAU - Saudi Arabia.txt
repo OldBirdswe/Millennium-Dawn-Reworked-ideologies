@@ -405,12 +405,24 @@ capital = 176
 	reverse_add_opinion_modifier = { target = ISR modifier = ISR_Arab_Conflict }
 
 	set_popularities = {
-		democratic = 1.0
-		communism = 11.0
-		fascism = 75.0
-		neutrality = 12.0
-		nationalist = 1.0
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 1.0
+		##communism = 11.0
+		##fascism = 75.0
+		##neutrality = 12.0
+		##nationalist = 1.0
+	##}
 	set_politics = {
 		ruling_party = fascism
 		last_election = "1999.1.23"

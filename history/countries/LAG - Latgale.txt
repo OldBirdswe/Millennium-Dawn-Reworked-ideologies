@@ -120,12 +120,24 @@ capital = 1013
 	set_variable = { var = int_investments value = 1 }
 
 	set_popularities = {
-		democratic = 0.0
-		communism = 30.1
-		fascism = 0.0
-		neutrality = 4.2
-		nationalist = 65.7
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 0.0
+		##communism = 30.1
+		##fascism = 0.0
+		##neutrality = 4.2
+		##nationalist = 65.7
+	##}
 	set_politics = {
 		ruling_party = nationalist
 		last_election = "1999.5.5"

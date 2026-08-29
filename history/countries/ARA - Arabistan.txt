@@ -188,12 +188,24 @@ capital = 399
 	}
 
 	set_popularities = {
-		democratic = 15.0
-		communism = 15.0
-		fascism = 5.0
-		neutrality = 20.0
-		nationalist = 45.0
+		communism = 0
+		socialism = 0
+		social_democracy = 0
+		liberalism = 0
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 15
+		populism = 45
+		nationalism = 20
+		monarchism = 20
 	}
+	#set_popularities = {
+		###democratic = 15.0
+		###communism = 15.0
+		###fascism = 5.0
+		###neutrality = 20.0
+		###nationalist = 45.0
+	###}
 	set_politics = {
 		ruling_party = nationalist
 		last_election = "1999.4.30"
@@ -228,7 +240,7 @@ capital = 399
 	create_country_leader = {
 		name = "Habib Jabor"
 		picture = "habib_jabor.dds"
-		ideology = Nat_Populism
+		ideology = national_populist
 		traits = {
 			nationalist_Nat_Populism
 			ruthless

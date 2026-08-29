@@ -85,18 +85,30 @@ capital = 622
 	set_variable = { overall_productivity = 327 }
 
 	set_politics = {
-		ruling_party = neutrality
+		ruling_party = conservatism
 		last_election = "1999.6.7"
 		election_frequency = 60
 		elections_allowed = no
 	}
 	set_popularities = {
-		democratic = 0.0 #Western
-		communism = 0.0 #Emerging
-		fascism = 0.0 #Salafist
-		neutrality = 100.0 #Neutrality
-		nationalist = 0.0 #Nationalist
+		communism = 0.0
+		socialism = 0.0
+		social_democracy = 0.0
+		liberalism = 0.0
+		agrarianism = 0.0
+		libertarianism = 0.0
+		conservatism = 100
+		populism = 0.0
+		nationalism = 0.0
+		monarchism = 0.0
 	}
+	#set_popularities = {
+		###democratic = 0.0 #Western
+		###communism = 0.0 #Emerging
+		###fascism = 0.0 #Salafist
+		###neutrality = 100.0 #Neutrality
+		###nationalist = 0.0 #Nationalist
+	###}
 
 	start_politics_input = yes
 
@@ -107,7 +119,7 @@ capital = 622
 	create_country_leader = {
 		name = "Hasan di Toro"
 		picture = "Hasan_Tiro.dds"
-		ideology = Neutral_Muslim_Brotherhood
+		ideology = islamist_conservatives
 		traits = {
 			neutrality_Neutral_Muslim_Brotherhood
 		}

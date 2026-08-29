@@ -4784,12 +4784,24 @@ capital = 1182
 	# after intput is finished, set startup_politics = yes
 
 	set_popularities = {
-		democratic = 63
-		fascism = 0
-		communism = 5
-		neutrality = 27
-		nationalist = 5
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 63
+		##fascism = 0
+		##communism = 5
+		##neutrality = 27
+		##nationalist = 5
+	##}
 	set_politics = {
 		ruling_party = democratic
 		last_election = "1996.11.5"

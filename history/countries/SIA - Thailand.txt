@@ -793,12 +793,24 @@ capital = 508
 	}
 
 	set_popularities = {
-		democratic = 45.0
-		communism = 0.0
-		fascism = 0.0
-		neutrality = 25.0
-		nationalist = 30.0
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 45.0
+		##communism = 0.0
+		##fascism = 0.0
+		##neutrality = 25.0
+		##nationalist = 30.0
+	##}
 	set_politics = {
 		ruling_party = democratic
 		# Back-dated from the real 17 Nov 1996 vote so the 48-month term puts the first in-game election on 6 Jan 2001, the historical date.

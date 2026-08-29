@@ -102,14 +102,26 @@ capital = 500
 
 
 	set_popularities = {
-		democratic = 0.0
-		communism = 0.0
-		fascism = 0.0
-		neutrality = 0.0
-		nationalist = 100.0
+		communism = 0
+		socialism = 0
+		social_democracy = 0
+		liberalism = 0
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 0
+		populism = 0
+		nationalism = 0
+		monarchism = 100
 	}
+	#set_popularities = {
+		###democratic = 0.0
+		###communism = 0.0
+		###fascism = 0.0
+		###neutrality = 0.0
+		###nationalist = 100.0
+	###}
 	set_politics = {
-		ruling_party = nationalist
+		ruling_party = monarchism
 		last_election = "1999.1.10"
 		election_frequency = 48
 		elections_allowed = no
@@ -132,7 +144,7 @@ capital = 500
 	create_country_leader = {
 		name = "Khaing Ray Khaing"
 		picture = "gfx/leaders/generic_politicians/southeastasian_024.dds"
-		ideology = Neutral_Autocracy
+		ideology = autocrat
 		traits = {
 			neutrality_Neutral_Autocracy
 			legendary_guerrilla_leader

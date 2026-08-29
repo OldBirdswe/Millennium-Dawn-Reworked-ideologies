@@ -72,14 +72,26 @@ capital = 1127
 	set_variable = { subjectinped = 3 }
 
 	set_popularities = {
-		democratic = 20.0
-		communism = 60.0
-		fascism = 0.0
-		neutrality = 10.0
-		nationalist = 10.0
+		communism = 14
+		socialism = 7
+		social_democracy = 0
+		liberalism = 5
+		agrarianism = 5
+		libertarianism = 5
+		conservatism = 50
+		populism = 13
+		nationalism = 1
+		monarchism = 0
 	}
+	#set_popularities = {
+		###democratic = 20.0
+		###communism = 60.0
+		###fascism = 0.0
+		###neutrality = 10.0
+		###nationalist = 10.0
+	###}
 	set_politics = {
-		ruling_party = communism
+		ruling_party = conservatism
 		last_election = "2000.1.1"
 		election_frequency = 60
 		elections_allowed = yes
@@ -103,7 +115,7 @@ capital = 1127
 	create_country_leader = {
 		name = "Aslan Dzharimov"
 		picture = "gfx/leaders/SOV/SUB/ADY_aslan_djarimov.dds"
-		ideology = Conservative
+		ideology = national_conservatives
 		traits = {
 			emerging_Conservative
 		}

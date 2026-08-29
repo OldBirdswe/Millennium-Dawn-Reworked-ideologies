@@ -159,14 +159,26 @@ capital = 1222
 	set_variable = { the_ulema_opinion = 60 }
 
 	set_popularities = {
-		democratic = 0.0
-		communism = 0.0
-		fascism = 76.0
-		neutrality = 24.0
-		nationalist = 0.0
+		communism = 0
+		socialism = 0
+		social_democracy = 0
+		liberalism = 0
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 0
+		populism = 0
+		nationalism = 24
+		monarchism = 76
 	}
+	#set_popularities = {
+		###democratic = 0.0
+		###communism = 0.0
+		###fascism = 76.0
+		###neutrality = 24.0
+		###nationalist = 0.0
+	###}
 	set_politics = {
-		ruling_party = fascism
+		ruling_party = monarchism
 		last_election = "2000.11.10"
 		election_frequency = 48
 		elections_allowed = no
@@ -186,7 +198,7 @@ capital = 1222
 	create_country_leader = {
 		name = "Hassan Abdullahi al-Turki"
 		picture = "gfx/leaders/AIA/AIA_Hassan_Turki.dds"
-		ideology = Caliphate
+		ideology = caliphate
 		traits = {
 			salafist_Caliphate
 			guerrilla_leader

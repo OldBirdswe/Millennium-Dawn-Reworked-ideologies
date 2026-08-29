@@ -412,14 +412,26 @@ capital = 76
 	give_guarantee = LIC
 
 	set_popularities = {
-		democratic = 65.0
-		communism = 5.0
-		fascism = 0.0
-		neutrality = 5.0
-		nationalist = 25.0
+		communism = 2
+		socialism = 1
+		social_democracy = 31
+		liberalism = 4
+		agrarianism = 5
+		libertarianism = 1
+		conservatism = 30
+		populism = 25
+		nationalism = 1
+		monarchism = 0
 	}
+	#set_popularities = {
+		###democratic = 65.0
+		###communism = 5.0
+		###fascism = 0.0
+		###neutrality = 5.0
+		###nationalist = 25.0
+	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = social_democracy
 		last_election = "1999.10.3"
 		election_frequency = 48
 		elections_allowed = yes
@@ -442,7 +454,7 @@ capital = 76
 	create_country_leader = {
 		name = "Viktor Klima"
 		picture = "Viktor_Klima.dds"
-		ideology = socialism
+		ideology = social_democrat
 		traits = {
 			western_socialism
 		}

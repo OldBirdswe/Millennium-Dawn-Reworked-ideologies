@@ -115,12 +115,24 @@ capital = 190
 	}
 
 	set_popularities = {
-		democratic = 1
-		communism = 1
-		fascism = 96
-		neutrality = 1
-		nationalist = 1
+		communism = 10.0
+		socialism = 10.0
+		social_democracy = 10.0
+		liberalism = 10.0
+		agrarianism = 10.0
+		libertarianism = 10.0
+		conservatism = 10.0
+		populism = 10.0
+		nationalism = 10.0
+		monarchism = 10.0
 	}
+	#set_popularities = {
+		##democratic = 1
+		##communism = 1
+		##fascism = 96
+		##neutrality = 1
+		##nationalist = 1
+	##}
 	set_politics = {
 		ruling_party = fascism
 		last_election = "2012.3.25"
