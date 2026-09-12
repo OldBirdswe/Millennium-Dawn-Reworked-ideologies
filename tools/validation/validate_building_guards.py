@@ -36,20 +36,16 @@ This is WARNING-only while the rule remains in rollout.
 import os
 import re
 import sys
-from typing import FrozenSet, List, Set, Tuple
+from typing import List, Set, Tuple
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import disk_cache  # noqa: E402 — same-dir import after sys.path tweak above
-from shared_utils import blank_quoted_strings, compute_line_offsets, line_for_offset
-from validator_common import (  # noqa: E402
-    BaseValidator,
-    run_validator_main,
-    strip_comments,
-)
+from guard_scan import SKIP_BLOCKS as _SKIP_BLOCKS  # noqa: E402
+from guard_scan import Context, report_findings  # noqa: E402
+from guard_scan import sanitize as _sanitize  # noqa: E402
+from shared_utils import compute_line_offsets, line_for_offset
+from validator_common import BaseValidator, _child_blocks, run_validator_main
 
-# Numeric names so `random_list` weight buckets (`50 = { ... }`) and state ids
-# (`652 = { ... }`) parse as blocks.
-_BLOCK_RE = re.compile(r"([A-Za-z_0-9@][A-Za-z0-9_.@]*(?::[A-Za-z0-9_]+)?)\s*=\s*\{")
 _TYPE_RE = re.compile(r"\btype\s*=\s*([A-Za-z_][A-Za-z0-9_]*)")
 _BARE_GUARD_RE = re.compile(r"\b([A-Za-z_][A-Za-z0-9_]*)\s*(?:>=|<=|==|!=|>|<)\s*-?\d")
 _BUILDING_FIELD_RE = re.compile(r"\b(?:building|type)\s*=\s*([A-Za-z_][A-Za-z0-9_]*)")
@@ -70,63 +66,6 @@ _NAMED_BUILDING_TRIGGERS = frozenset(
         "num_of_buildings",
     }
 )
-# Never contain effects. `trigger`/`available`/`visible`/`allowed` are
-# skipped rather than treated as presence proofs: a country-level
-# any_owned_state check does not prove the effect's state has the building.
-_SKIP_BLOCKS = frozenset(
-    {
-        "limit",
-        "ai_will_do",
-        "effect_tooltip",
-        "search_filters",
-        "prerequisite",
-        "mutually_exclusive",
-        "trigger",
-        "available",
-        "visible",
-        "allowed",
-    }
-)
-
-
-def _match_brace(text: str, open_pos: int) -> int:
-    """Return the index of the `}` closing the `{` at ``open_pos``, or -1."""
-    depth = 0
-    for i in range(open_pos, len(text)):
-        char = text[i]
-        if char == "{":
-            depth += 1
-        elif char == "}":
-            depth -= 1
-            if depth == 0:
-                return i
-    return -1
-
-
-def _sanitize(text: str) -> str:
-    """Strip comments and blank quoted strings, preserving line numbering.
-
-    A `{` inside a `log = "..."` string, or a meta_effect template value like
-    `DAM = "[?building_damage_by_missile]"`, would otherwise desync brace
-    matching or false-match the bare-comparison guard regex.
-    """
-    return blank_quoted_strings(strip_comments(text))
-
-
-def _child_blocks(text: str, start: int, end: int) -> List[Tuple[str, int, int, int]]:
-    """Direct child blocks of a body as (name, name_start, body_start, body_end)."""
-    blocks = []
-    i = start
-    while i < end:
-        match = _BLOCK_RE.search(text, i, end)
-        if not match:
-            break
-        close = _match_brace(text, match.end() - 1)
-        if close < 0 or close > end:
-            break
-        blocks.append((match.group(1), match.start(), match.end(), close))
-        i = close + 1
-    return blocks
 
 
 def _extract_building_guards(text: str) -> Set[str]:
@@ -145,20 +84,6 @@ def _extract_building_guards(text: str) -> Set[str]:
         else:
             buildings.update(_extract_building_guards(text[body_start:body_end]))
     return buildings
-
-
-class Context:
-    """Building types proven present at a point in the script."""
-
-    __slots__ = ("present",)
-
-    def __init__(self, present: FrozenSet[str] = frozenset()):
-        self.present = present
-
-    def apply(self, buildings: Set[str]) -> "Context":
-        if not buildings:
-            return self
-        return Context(self.present | buildings)
 
 
 class Scanner:
@@ -248,16 +173,13 @@ class Validator(BaseValidator):
         files = self._collect_files(["common/**/*.txt", "events/**/*.txt"])
         results = self._pool_map(scan_file, [(f, self.mod_path) for f in files])
 
-        issues = sorted(row for rows in results for row in rows)
-        for category, relative, line, message in issues:
-            self.add_warning(category, message, relative, line)
-
-        if issues:
-            self.log(f"✗ {len(issues)} unguarded building effect(s):", "error")
-            for _, relative, line, message in issues:
-                self.log(f"  {relative}:{line} - {message}")
-        else:
-            self.log("✓ All damage_building/remove_building effects are guarded")
+        report_findings(
+            self,
+            sorted(row for rows in results for row in rows),
+            self.add_warning,
+            "unguarded building effect(s)",
+            "All damage_building/remove_building effects are guarded",
+        )
 
     def run_validations(self):
         self.validate_building_guards()

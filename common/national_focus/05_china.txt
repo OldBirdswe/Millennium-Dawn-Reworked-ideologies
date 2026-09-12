@@ -12,7 +12,7 @@ focus_tree = {
 	shared_focus = CHI_NKO_bilateral_cooperation
 	shared_focus = CHI_SOV_treaty_good_neighbourliness
 
-	continuous_focus_position = { x = 400 y = 3040 }
+	continuous_focus_position = { x = 1800 y = 1250 }
 
 	## Shortcuts
 	shortcut = {
@@ -45,7 +45,7 @@ focus_tree = {
 	## Inlay Focusses
 	inlay_window = {
 		id = CHI_national_committee_inlay_window
-		position = { x = 2300 y = 50 }
+		position = { x = 1800 y = 50 }
 	}
 
 
@@ -354,8 +354,16 @@ focus_tree = {
 				date < 2001.1.1
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -410,8 +418,20 @@ focus_tree = {
 				date < 2001.1.1
 			}
 			modifier = {
-				add = 4
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -677,8 +697,16 @@ focus_tree = {
 				date < 2003.1.1
 			}
 			modifier = {
-				add = 4
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -1364,9 +1392,7 @@ focus_tree = {
 			if = {
 				limit = { has_dlc = "Arms Against Tyranny" }
 				newline = yes
-				mio:CHI_crrc_manufacturer = {
-					add_mio_funds_gain_factor = 0.10
-				}
+				mio:CHI_crrc_manufacturer = { add_mio_funds_gain_factor = 0.10 }
 			}
 		}
 
@@ -1401,15 +1427,23 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_yuan_internationalisation"
+			every_country = {
+				limit = {
+					OR = {
+						has_idea = chinese_yuan
+						has_idea = chinese_yuan_2
+					}
+				}
+				if = {
+					limit = { has_idea = chinese_yuan_2 }
+					swap_ideas = { remove_idea = chinese_yuan_2 add_idea = chinese_yuan_3 }
+				}
+				else = {
+					swap_ideas = { remove_idea = chinese_yuan add_idea = chinese_yuan_3 }
+				}
+			}
 			if = {
-				limit = { has_idea = chinese_yuan_2 }
-				swap_ideas = { remove_idea = chinese_yuan_2 add_idea = chinese_yuan_3 }
-			}
-			else_if = {
-				limit = { has_idea = chinese_yuan }
-				swap_ideas = { remove_idea = chinese_yuan add_idea = chinese_yuan_3 }
-			}
-			else = {
+				limit = { NOT = { has_idea = chinese_yuan_3 } }
 				add_ideas = chinese_yuan_3
 			}
 		}
@@ -1547,8 +1581,20 @@ focus_tree = {
 				date < 2004.1.1
 			}
 			modifier = {
-				add = 4
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -1949,8 +1995,16 @@ focus_tree = {
 				date < 2012.1.1
 			}
 			modifier = {
-				add = 4
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
 			}
 		}
 	}
@@ -1977,9 +2031,13 @@ focus_tree = {
 			newline = yes
 			add_power_balance_value = { id = CHI_factional_balance value = -0.05 tooltip_side = CHI_princeling_shanghai }
 			newline = yes
-			every_other_country = {
-				limit = { has_government = democratic }
-				add_opinion_modifier = { target = ROOT modifier = CHI_document_nine_opinion }
+			for_each_scope_loop = {
+				array = global.democratic_countries
+				tooltip = TT_ALL_DEMOCRATIC_NATIONS_GAIN
+				if = {
+					limit = { NOT = { tag = ROOT } }
+					add_opinion_modifier = { target = ROOT modifier = CHI_document_nine_opinion }
+				}
 			}
 		}
 
@@ -2277,8 +2335,18 @@ focus_tree = {
 				date < 2017.1.1
 			}
 			modifier = {
-				add = 4
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
 			}
 		}
 	}
@@ -2471,8 +2539,20 @@ focus_tree = {
 				date < 2017.1.1
 			}
 			modifier = {
-				add = 4
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -2663,8 +2743,20 @@ focus_tree = {
 				date < 2009.1.1
 			}
 			modifier = {
-				add = 4
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -3050,7 +3142,7 @@ focus_tree = {
 		id = CHI_open_the_august_1st_building
 		icon = focus_PRC_central_military_commision
 
-		x = 305
+		x = 250
 		y = 0
 
 		cost = 10
@@ -3113,8 +3205,16 @@ focus_tree = {
 				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
-				add = 3
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
 			}
 		}
 	}
@@ -3159,6 +3259,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -3195,6 +3299,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -3234,7 +3342,22 @@ focus_tree = {
 			show_unit_leaders_tooltip = CHI_general_leang
 		}
 
-		ai_will_do = { base = 8 }
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
 	}
 
 	focus = {
@@ -3272,6 +3395,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -3318,6 +3445,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -3352,6 +3483,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -3385,6 +3520,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -3448,6 +3587,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -3503,6 +3646,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -3551,6 +3698,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -3603,6 +3754,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -3650,6 +3805,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -3686,6 +3845,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -3734,6 +3897,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -3819,6 +3986,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -3860,6 +4031,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -3898,6 +4073,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -3933,6 +4112,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -3975,6 +4158,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -4022,6 +4209,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -4066,8 +4257,20 @@ focus_tree = {
 				date < 2001.1.1
 			}
 			modifier = {
-				add = 3
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -4564,6 +4767,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -4601,6 +4808,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -4647,6 +4858,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -4705,6 +4920,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -4740,6 +4959,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -4763,7 +4986,7 @@ focus_tree = {
 				limit = { has_tech = infantry_weapons_5 }
 				add_tech_bonus = {
 					name = CHI_qbz191_rifle
-					ahead_reduction = 5
+					ahead_reduction = 2.5
 					uses = 1
 					technology = infantry_weapons_6
 				}
@@ -4788,6 +5011,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -4809,9 +5036,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_individual_soldier_system"
-			sp:sp_tactical_augmented_reality = {
-				add_project_progress_ratio = 0.50
-			}
+			sp:sp_tactical_augmented_reality = { add_project_progress_ratio = 0.50 }
 			newline = yes
 			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
 			add_to_variable = { CHI_land_recon_factor = 0.025 tooltip = recon_factor_tt }
@@ -4827,6 +5052,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -4877,6 +5106,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -4900,9 +5133,7 @@ focus_tree = {
 				limit = { has_dlc = "By Blood Alone" }
 				has_tech = drone_1
 			}
-			else = {
-				has_tech = Air_UAV1
-			}
+			else = { has_tech = Air_UAV1 }
 		}
 
 		completion_reward = {
@@ -4921,6 +5152,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -4964,9 +5199,7 @@ focus_tree = {
 						special_type_slot_2 = empty
 						special_type_slot_4 = tank_battlestation_2
 					}
-					upgrades = {
-						tank_nsb_fire_upgrade = 2
-					}
+					upgrades = { tank_nsb_fire_upgrade = 2 }
 					icon = "GFX_CHI_SP_arty_2_medium"
 					design_team = mio:CHI_norinco_manufacturer
 				}
@@ -4989,6 +5222,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -5032,6 +5269,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -5055,12 +5296,13 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_phl_mlrs_modernisation"
 			add_tech_bonus = {
 				name = CHI_phl_mlrs_modernisation
-				ahead_reduction = 5
+				ahead_reduction = 2.5
 				uses = 1
 				category = CAT_sp_r_arty
 			}
 			newline = yes
 			add_design_template_bonus = {
+				name = CHI_phl_mlrs_modernisation
 				uses = 1
 				cost_factor = 0.80
 				equipment = medium_tank_rocket_chassis
@@ -5076,6 +5318,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -5120,6 +5366,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -5167,6 +5417,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -5201,6 +5455,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -5237,8 +5495,17 @@ focus_tree = {
 				date < 2010.1.1
 			}
 			modifier = {
-				add = 3
-				is_historical_focus_on = yes
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -5278,6 +5545,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -5313,8 +5584,17 @@ focus_tree = {
 				date < 2010.1.1
 			}
 			modifier = {
-				add = 3
-				is_historical_focus_on = yes
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -5352,6 +5632,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -5386,6 +5670,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -5430,6 +5718,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -5463,6 +5755,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -5503,6 +5799,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -5541,6 +5841,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -5576,6 +5880,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -5610,6 +5918,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -5630,6 +5942,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_type_15_light_tank"
 			add_design_template_bonus = {
+				name = CHI_type_15_light_tank
 				uses = 1
 				cost_factor = 1
 				equipment = medium_tank_destroyer_chassis
@@ -5654,6 +5967,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -5717,6 +6034,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -5758,6 +6079,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -5792,6 +6117,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -5833,6 +6162,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -5860,18 +6193,17 @@ focus_tree = {
 					parent_version = 1
 					modules = {
 						main_armament_slot = tank_medium_cannon_3
+						ammunition_load_slot = mixed_main_ammo_3
 						turret_type_slot = tank_base_tank_turret
 						suspension_type_slot = tank_pneumatic_suspension_heavy
 						armor_type_slot = tank_composite_armor_gen3
 						engine_type_slot = tank_diesel_engine_gen3
 						reload_type_slot = manual_loading
-						special_type_slot_1 = smoke_launchers_2
+						special_type_slot_2 = smoke_launchers_2
 						secondary_armament_slot = additional_mg
 						special_type_slot_4 = tank_battlestation_3
 					}
-					upgrades = {
-						tank_nsb_armor_upgrade = 6
-					}
+					upgrades = { tank_nsb_armor_upgrade = 6 }
 					icon = "GFX_CHI_mbt_tech_2_medium"
 					design_team = mio:CHI_inner_mongolia_first_machinery_tank_manufacturer
 				}
@@ -5897,6 +6229,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -5935,6 +6271,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -5970,6 +6310,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -6040,6 +6384,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -6083,6 +6431,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -6120,6 +6472,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -6170,8 +6526,17 @@ focus_tree = {
 				date < 2015.1.1
 			}
 			modifier = {
-				add = 3
-				is_historical_focus_on = yes
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -6229,6 +6594,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -6275,9 +6644,7 @@ focus_tree = {
 						special_slot_type_1 = spec_countermeasures_1
 						special_slot_type_2 = spec_refuel_1
 					}
-					upgrades = {
-						plane_bba_radar_upgrade = 1
-					}
+					upgrades = { plane_bba_radar_upgrade = 1 }
 					icon = "gfx/interface/technologies/CHI/AIR/J-11B.dds"
 					design_team = mio:CHI_sac_manufacturer
 				}
@@ -6314,6 +6681,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -6383,6 +6754,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -6441,12 +6816,16 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
 	focus = {
 		id = CHI_project_jxx
-		icon = f35
+		icon = CHI_focus_j20
 
 		x = -3
 		y = 4
@@ -6468,21 +6847,19 @@ focus_tree = {
 				limit = { has_dlc = "By Blood Alone" }
 				add_tech_bonus = {
 					name = CHI_project_jxx
-					ahead_reduction = 5
+					ahead_reduction = 2.5
 					uses = 1
 					technology = gen_5_light
 					technology = gen_5_medium
 					technology = gen_5_large
 				}
 				newline = yes
-				sp:sp_stealth_technology = {
-					add_project_progress_ratio = 0.35
-				}
+				sp:sp_stealth_technology = { add_project_progress_ratio = 0.35 }
 			}
 			else = {
 				add_tech_bonus = {
 					name = CHI_project_jxx
-					ahead_reduction = 5
+					ahead_reduction = 2.5
 					uses = 1
 					technology = AS_Fighter5
 					technology = MR_Fighter5
@@ -6500,6 +6877,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -6539,6 +6920,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -6575,12 +6960,16 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
 	focus = {
 		id = CHI_j10c_multirole_refit
-		icon = fighter_plane
+		icon = CHI_focus_j10
 
 		x = -1
 		y = 1
@@ -6621,9 +7010,7 @@ focus_tree = {
 						wingform_type_slot = wing_delta_canard
 						special_slot_type_1 = spec_countermeasures_1
 					}
-					upgrades = {
-						plane_bba_radar_upgrade = 2
-					}
+					upgrades = { plane_bba_radar_upgrade = 2 }
 					icon = "gfx/interface/technologies/CHI/AIR/J-10C.dds"
 					design_team = mio:CHI_avic_manufacturer
 				}
@@ -6653,12 +7040,16 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
 	focus = {
 		id = CHI_shenyang_j35_gyrfalcon
-		icon = fighters2
+		icon = CHI_focus_j35
 
 		x = 1
 		y = 1
@@ -6756,6 +7147,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -6794,9 +7189,7 @@ focus_tree = {
 						wingform_type_slot = wing_swept
 						special_slot_type_2 = spec_refuel_2
 					}
-					upgrades = {
-						plane_bba_radar_upgrade = 1
-					}
+					upgrades = { plane_bba_radar_upgrade = 1 }
 					icon = "gfx/interface/technologies/CHI/AIR/H-6K.dds"
 					design_team = mio:CHI_avic_manufacturer
 				}
@@ -6825,6 +7218,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -6868,12 +7265,16 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
 	focus = {
 		id = CHI_jh7a_update
-		icon = F16_2
+		icon = CHI_focus_jh7
 
 		x = 1
 		y = 2
@@ -6906,9 +7307,7 @@ focus_tree = {
 						special_slot_type_1 = spec_countermeasures_1
 						special_slot_type_2 = spec_tgp_2
 					}
-					upgrades = {
-						plane_bba_radar_upgrade = 1
-					}
+					upgrades = { plane_bba_radar_upgrade = 1 }
 					icon = "gfx/interface/technologies/CHI/AIR/JH-7A.dds"
 					design_team = mio:CHI_avic_manufacturer
 				}
@@ -6938,12 +7337,16 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
 	focus = {
 		id = CHI_j16_strike_platform
-		icon = f-2a
+		icon = CHI_focus_j15
 
 		x = 0
 		y = 3
@@ -6977,9 +7380,7 @@ focus_tree = {
 						wingform_type_slot = wing_swept
 						special_slot_type_1 = spec_countermeasures_1
 					}
-					upgrades = {
-						plane_bba_radar_upgrade = 2
-					}
+					upgrades = { plane_bba_radar_upgrade = 2 }
 					icon = "gfx/interface/technologies/CHI/AIR/J-16.dds"
 					design_team = mio:CHI_sac_manufacturer
 				}
@@ -7017,6 +7418,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -7051,6 +7456,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -7099,6 +7508,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -7143,6 +7556,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -7179,6 +7596,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -7213,6 +7634,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -7249,6 +7674,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -7287,6 +7716,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -7323,6 +7756,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -7361,6 +7798,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -7421,6 +7862,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -7443,7 +7888,7 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_project_921"
 			unlock_decision_category_tooltip = CHI_space_program
 			add_tech_bonus = { name = CHI_project_921 bonus = 0.25 uses = 2 category = CAT_space }
-			add_tech_bonus = { name = CHI_project_921 ahead_reduction = 5 uses = 1 category = CAT_space }
+			add_tech_bonus = { name = CHI_project_921 ahead_reduction = 2.5 uses = 1 category = CAT_space }
 			newline = yes
 			set_temp_variable = { treasury_change = -50 }
 			modify_treasury_effect = yes
@@ -7774,11 +8219,16 @@ focus_tree = {
 			}
 			modifier = {
 				factor = 0
-				is_historical_focus_on = yes
+				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
 				factor = 0
-				has_active_mission = bankruptcy_incoming_collapse
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
 			}
 		}
 	}
@@ -7912,6 +8362,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -7949,6 +8403,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -8009,6 +8467,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -8043,6 +8505,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -8095,6 +8561,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -8131,6 +8601,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -8173,6 +8647,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -8194,7 +8672,7 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_054a_production_line"
 			create_equipment_variant = {
 				name = "Type 054A"
-				type = frigate_hull_5
+				type = frigate_hull_4
 				allow_without_tech = yes
 				modules = {
 					fixed_ship_engine_slot = module_light_surface_jet_turbine_power3
@@ -8214,7 +8692,7 @@ focus_tree = {
 			add_equipment_production = {
 				equipment = {
 					version_name = "Type 054A"
-					type = frigate_hull_5
+					type = frigate_hull_4
 				}
 				amount = 1
 				progress = 0.15
@@ -8223,7 +8701,7 @@ focus_tree = {
 			add_equipment_production = {
 				equipment = {
 					version_name = "Type 054A"
-					type = frigate_hull_5
+					type = frigate_hull_4
 				}
 				amount = 1
 				progress = 0.15
@@ -8262,6 +8740,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -8296,6 +8778,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -8344,6 +8830,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -8377,6 +8867,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -8454,6 +8948,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -8485,6 +8983,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -8520,6 +9022,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -8557,6 +9063,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -8593,6 +9103,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -8617,7 +9131,7 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_renhai_cruiser"
 			create_equipment_variant = {
 				name = "Type 055 Renhai"
-				type = cruiser_hull_5
+				type = cruiser_hull_4
 				allow_without_tech = yes
 				modules = {
 					fixed_ship_engine_slot = module_surface_jet_turbine_power4
@@ -8626,12 +9140,12 @@ focus_tree = {
 					fixed_ship_battery_slot = module_127mm_battery
 					fixed_ship_battery_slot_2 = module_naval_vls_cells_64
 					fixed_ship_battery_slot_3 = module_naval_vls_cells_64
-					fixed_ship_battery_slot_4 = module_naval_vls_cells_64
-					front_1_custom_slot = module_naval_vls_cells_64
-					front_2_custom_slot = module_naval_vls_cells_64
+					fixed_ship_battery_slot_4 = module_naval_vls_cells_32
+					front_1_custom_slot = module_naval_vls_cells_32
+					front_2_custom_slot = module_naval_vls_cells_32
 					mid_1_custom_slot = module_ciws_4
 					mid_2_custom_slot = module_naval_missile_mount_quad
-					rear_1_custom_slot = module_naval_vls_cells_64
+					rear_1_custom_slot = module_naval_vls_cells_32
 					rear_2_custom_slot = module_light_helipad_2
 					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_4
 				}
@@ -8641,7 +9155,7 @@ focus_tree = {
 			add_equipment_production = {
 				equipment = {
 					version_name = "Type 055 Renhai"
-					type = cruiser_hull_5
+					type = cruiser_hull_4
 				}
 				amount = 1
 				progress = 0.10
@@ -8679,6 +9193,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -8735,6 +9253,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -8772,6 +9294,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -8799,7 +9325,7 @@ focus_tree = {
 			add_tech_bonus = { name = CHI_the_type_075_yushen bonus = 0.25 uses = 1 category = CAT_helicopter_operators }
 			create_equipment_variant = {
 				name = "Type 075 Yushen"
-				type = helicopter_operator_hull_4
+				type = helicopter_operator_hull_3
 				allow_without_tech = yes
 				modules = {
 					fixed_ship_engine_slot = module_surface_jet_turbine_power3
@@ -8819,7 +9345,7 @@ focus_tree = {
 			add_equipment_production = {
 				equipment = {
 					version_name = "Type 075 Yushen"
-					type = helicopter_operator_hull_4
+					type = helicopter_operator_hull_3
 				}
 				amount = 1
 				progress = 0.10
@@ -8844,6 +9370,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -8880,6 +9410,10 @@ focus_tree = {
 			modifier = {
 				add = 3
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -8931,6 +9465,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -8966,8 +9504,17 @@ focus_tree = {
 				date < 2020.1.1
 			}
 			modifier = {
-				add = 3
-				is_historical_focus_on = yes
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -9006,6 +9553,10 @@ focus_tree = {
 			modifier = {
 				add = 5
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -9065,6 +9616,10 @@ focus_tree = {
 				add = 3
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -9073,7 +9628,7 @@ focus_tree = {
 		id = CHI_Chinese_Diplomacy
 		icon = diplomacy
 
-		x = 60
+		x = 55
 		y = 0
 
 		cost = 5
@@ -9176,12 +9731,22 @@ focus_tree = {
 				date < 2012.1.1
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
-			}
-			modifier = {
 				add = 1
 				has_idea = super_power
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
 			}
 		}
 	}
@@ -9386,7 +9951,7 @@ focus_tree = {
 				MAY = { add_ideas = CHI_scs_claimant_under_pressure }
 			}
 			newline = yes
-			news_event = { id = china_scs.20 hours = 6 }
+			country_event = { id = china_scs.20 hours = 6 }
 		}
 
 		ai_will_do = {
@@ -9398,6 +9963,10 @@ focus_tree = {
 			modifier = {
 				add = 2
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -9439,12 +10008,24 @@ focus_tree = {
 				date < 2011.1.1
 			}
 			modifier = {
-				add = 3
-				is_historical_focus_on = no
-			}
-			modifier = {
 				add = 2
 				has_government = democratic
+			}
+			modifier = {
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -9573,9 +10154,13 @@ focus_tree = {
 			add_to_variable = { CHI_scs_framework = 5 tooltip = CHI_scs_framework_tt }
 			clamp_variable = { var = CHI_scs_framework min = -50 max = 50 }
 			newline = yes
-			every_other_country = {
-				limit = { has_country_flag = asean_nation_flag }
-				add_opinion_modifier = { target = ROOT modifier = medium_increase }
+			for_each_scope_loop = {
+				array = global.ASEAN_Member
+				tooltip = TT_ALL_ASEAN_NATIONS_GAIN
+				if = {
+					limit = { NOT = { tag = ROOT } }
+					add_opinion_modifier = { target = ROOT modifier = medium_increase }
+				}
 			}
 			newline = yes
 			news_event = { id = china_scs.35 hours = 6 }
@@ -9698,13 +10283,28 @@ focus_tree = {
 		ai_will_do = {
 			base = 3
 			modifier = {
-				add = 5
-				is_historical_focus_on = no
-				date > 2025.1.1
-			}
-			modifier = {
 				add = -10
 				has_war = yes
+			}
+			modifier = {
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -9756,6 +10356,10 @@ focus_tree = {
 				add = 2
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -9804,6 +10408,10 @@ focus_tree = {
 				add = 2
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -9848,7 +10456,7 @@ focus_tree = {
 			unlock_decision_tooltip = CHI_scs_demand_tribute_PHI
 			unlock_decision_tooltip = CHI_scs_demand_tribute_MAY
 			newline = yes
-			news_event = { id = china_scs.51 hours = 6 }
+			country_event = { id = china_scs.51 hours = 6 }
 		}
 
 		ai_will_do = {
@@ -9858,8 +10466,20 @@ focus_tree = {
 				date < 2011.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -9938,8 +10558,24 @@ focus_tree = {
 				date < 2011.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -10013,9 +10649,7 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_The_Indian_Subcontinent"
 			RAJ = { country_event = { id = sino_indian.33 days = 1 } }
 			unlock_decision_category_tooltip = CHI_subcontinent_strategy
-			effect_tooltip = {
-				RAJ = { add_ideas = CHI_raj_foreign_defense_pressure }
-			}
+			effect_tooltip = { RAJ = { add_ideas = CHI_raj_foreign_defense_pressure } }
 		}
 
 		ai_will_do = {
@@ -10079,8 +10713,16 @@ focus_tree = {
 				date < 2002.1.1
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -10132,8 +10774,20 @@ focus_tree = {
 				date < 2002.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -10241,8 +10895,20 @@ focus_tree = {
 				date < 2003.1.1
 			}
 			modifier = {
-				add = 1
-				is_historical_focus_on = no
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -10307,8 +10973,16 @@ focus_tree = {
 				date < 2017.1.1
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -10642,25 +11316,15 @@ focus_tree = {
 			NOT = { has_war_with = TTP }
 			if = {
 				limit = { country_exists = TTP }
-				TTP = {
-					influence_higher_20 = yes
-				}
+				TTP = { influence_higher_20 = yes }
 			}
 			if = {
 				limit = { country_exists = TAL }
-				TAL = {
-					influence_higher_20 = yes
-				}
+				TAL = { influence_higher_20 = yes }
 			}
-			AFG = {
-				influence_higher_20 = yes
-			}
-			PAK = {
-				influence_higher_20 = yes
-			}
-			TAJ = {
-				influence_higher_20 = yes
-			}
+			AFG = { influence_higher_20 = yes }
+			PAK = { influence_higher_20 = yes }
+			TAJ = { influence_higher_20 = yes }
 		}
 
 		bypass = { NOT = { 592 = { owns_or_subject_of = yes } } }
@@ -10678,8 +11342,16 @@ focus_tree = {
 				date < 2005.1.1
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
 			}
 		}
 	}
@@ -10705,15 +11377,9 @@ focus_tree = {
 			NOT = { has_war_with = AFG }
 			NOT = { has_war_with = PAK }
 			NOT = { has_war_with = TAJ }
-			AFG = {
-				influence_higher_30 = yes
-			}
-			PAK = {
-				influence_higher_30 = yes
-			}
-			TAJ = {
-				influence_higher_30 = yes
-			}
+			AFG = { influence_higher_30 = yes }
+			PAK = { influence_higher_30 = yes }
+			TAJ = { influence_higher_30 = yes }
 			AFG = {
 				custom_trigger_tooltip = {
 					tooltip = AFG_NOR_tt
@@ -10743,8 +11409,20 @@ focus_tree = {
 				date < 2005.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -10878,8 +11556,13 @@ focus_tree = {
 				date < 2002.1.1
 			}
 			modifier = {
-				add = 1
-				is_historical_focus_on = no
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
 			}
 		}
 	}
@@ -11060,11 +11743,23 @@ focus_tree = {
 			}
 			modifier = {
 				add = 1
-				is_historical_focus_on = no
+				has_government = neutrality
 			}
 			modifier = {
-				add = 1
-				has_government = neutrality
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -11176,14 +11871,20 @@ focus_tree = {
 		ai_will_do = {
 			base = 3
 			modifier = {
-				add = 1
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
 				OR = {
-					is_historical_focus_on = no
-					AND = {
-						is_historical_focus_on = yes
-						date > 2021.01.01
-					}
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -11307,8 +12008,20 @@ focus_tree = {
 				date < 2017.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -11356,8 +12069,20 @@ focus_tree = {
 				date < 2017.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -11399,8 +12124,20 @@ focus_tree = {
 				date < 2017.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -11475,8 +12212,20 @@ focus_tree = {
 				date < 2017.1.1
 			}
 			modifier = {
-				add = 1
-				is_historical_focus_on = no
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -11503,9 +12252,7 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_japan_question"
 			JAP = { country_event = { id = CHI_foreign.250 days = 1 } }
 			unlock_decision_category_tooltip = CHI_japan_strategy
-			effect_tooltip = {
-				JAP = { add_ideas = CHI_jap_historical_pressure }
-			}
+			effect_tooltip = { JAP = { add_ideas = CHI_jap_historical_pressure } }
 		}
 
 		ai_will_do = {
@@ -11554,8 +12301,20 @@ focus_tree = {
 				date < 2002.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -11636,6 +12395,10 @@ focus_tree = {
 				add = 2
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -11693,7 +12456,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
 		completion_reward = {
-			news_event = china_news.yasukuni_recall
+			country_event = china_news.yasukuni_recall
 			JAP = {
 				add_opinion_modifier = { target = CHI modifier = CHI_yasukuni_diplomatic_freeze }
 				country_event = { id = CHI_foreign.211 days = 1 }
@@ -11758,6 +12521,10 @@ focus_tree = {
 				add = 2
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -11788,7 +12555,7 @@ focus_tree = {
 				add_to_variable = { CHI_chinese_aggression = -1 tooltip = CHI_chinese_aggression_tt }
 			}
 			newline = yes
-			news_event = china_news.boycott_streets
+			country_event = china_news.boycott_streets
 			newline = yes
 			add_to_variable = { CHI_chinese_aggression = 2 tooltip = CHI_chinese_aggression_tt }
 			clamp_variable = { var = CHI_chinese_aggression min = -50 max = 50 }
@@ -11849,16 +12616,23 @@ focus_tree = {
 		bypass = { CHI = { owns_state = 939 } }
 
 		completion_reward = {
+			log = "[GetDateText]: [This.GetName]: focus CHI_the_senkaku_crisis executed"
 			country_event = { id = CHI_foreign.200 days = 1 }
 			news_event = CHI_foreign.203
+			newline = yes
 			if = {
-				limit = { any_country = { has_guaranteed = JAP } }
+				limit = {
+					any_of_scopes = {
+						array = JAP.guaranteeing_nations
+						exists = yes
+						has_guaranteed = JAP
+					}
+				}
 				custom_effect_tooltip = JAP_USA_call_tt
 			}
 			newline = yes
 			add_to_variable = { CHI_chinese_aggression = 3 tooltip = CHI_chinese_aggression_tt }
 			clamp_variable = { var = CHI_chinese_aggression min = -50 max = 50 }
-			log = "[GetDateText]: [This.GetName]: focus CHI_the_senkaku_crisis executed"
 		}
 
 		ai_will_do = {
@@ -11927,13 +12701,24 @@ focus_tree = {
 				factor = 0
 				date < 2002.1.1
 			}
-			modifier = { add = 1 is_historical_focus_on = no }
 			modifier = {
 				add = 2
 				OR = {
 					has_government = neutrality
 					has_government = democratic
 				}
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
 			}
 		}
 	}
@@ -11978,7 +12763,7 @@ focus_tree = {
 			newline = yes
 			add_ideas = CHI_japan_soft_power
 			newline = yes
-			news_event = china_news.panda_arrives_tokyo
+			country_event = china_news.panda_arrives_tokyo
 			newline = yes
 			add_to_variable = { CHI_chinese_aggression = -1 tooltip = CHI_chinese_aggression_tt }
 			clamp_variable = { var = CHI_chinese_aggression min = -50 max = 50 }
@@ -12535,8 +13320,16 @@ focus_tree = {
 				date < 2002.1.1
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
 			}
 		}
 	}
@@ -12566,9 +13359,7 @@ focus_tree = {
 			add_to_tech_sharing_group = CHI_SCO_civilian_research
 			newline = yes
 			every_other_country = {
-				limit = {
-					is_sco = yes
-				}
+				limit = { is_sco = yes }
 				add_tech_bonus = {
 					name = CHI_Civilian_Technology_Sharing
 					bonus = 0.1
@@ -12728,8 +13519,13 @@ focus_tree = {
 				date < 2002.1.1
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
 			}
 		}
 	}
@@ -12828,8 +13624,20 @@ focus_tree = {
 				date < 2002.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -13015,11 +13823,23 @@ focus_tree = {
 			base = 8
 			modifier = {
 				factor = 0
-				is_historical_focus_on = yes
+				date < 2005.1.1
+			}
+			modifier = {
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
 			}
 			modifier = {
 				factor = 0
-				date < 2005.1.1
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -13040,7 +13860,8 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_FOREIGN_POLICY }
 
 		available = {
-			has_government = SOV
+			country_exists = SOV
+			SOV = { is_sco = yes }
 			NOT = { has_completed_focus = CHI_Wolf_Warrior_Diplomacy }
 			custom_trigger_tooltip = {
 				tooltip = CHI_chinese_aggression_max_1_tt
@@ -13075,8 +13896,16 @@ focus_tree = {
 				date < 2005.1.1
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
 			}
 		}
 	}
@@ -13114,9 +13943,13 @@ focus_tree = {
 			clamp_variable = { var = CHI_sco_cohesion min = 0 max = 100 }
 			add_to_variable = { CHI_sco_balance = 1 }
 			clamp_variable = { var = CHI_sco_balance min = -10 max = 10 }
-			every_other_country = {
-				limit = { has_idea = ASEAN_Member }
-				unlock_decision_tooltip = CHI_sco_apply_as_dialogue_partner
+			for_each_scope_loop = {
+				array = global.ASEAN_Member
+				tooltip = TT_ALL_ASEAN_NATIONS_GAIN
+				if = {
+					limit = { NOT = { tag = ROOT } }
+					unlock_decision_tooltip = CHI_sco_apply_as_dialogue_partner
+				}
 			}
 		}
 
@@ -13127,8 +13960,16 @@ focus_tree = {
 				date < 2006.1.1
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
 			}
 		}
 	}
@@ -13182,8 +14023,20 @@ focus_tree = {
 				date < 2006.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -13352,8 +14205,20 @@ focus_tree = {
 				date < 2006.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -13388,22 +14253,14 @@ focus_tree = {
 				limit = { has_government = communism }
 				custom_trigger_tooltip = {
 					tooltip = CSTO_all_emerging_tt
-					SOV = {
-						all_allied_country = {
-							has_government = communism
-						}
-					}
+					SOV = { all_allied_country = { has_government = communism } }
 				}
 			}
 			if = {
 				limit = { has_government = democratic }
 				custom_trigger_tooltip = {
 					tooltip = CSTO_all_democratic_tt
-					SOV = {
-						all_allied_country = {
-							has_government = democratic
-						}
-					}
+					SOV = { all_allied_country = { has_government = democratic } }
 				}
 			}
 		}
@@ -13429,8 +14286,16 @@ focus_tree = {
 				date < 2006.1.1
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
 			}
 		}
 	}
@@ -13485,9 +14350,7 @@ focus_tree = {
 				limit = { is_faction_leader = yes }
 				add_faction_goal = faction_goal_global_hegemony
 			}
-			else = {
-				custom_effect_tooltip = CHI_An_Alliance_to_Rival_NATO_tt
-			}
+			else = { custom_effect_tooltip = CHI_An_Alliance_to_Rival_NATO_tt }
 		}
 
 		ai_will_do = {
@@ -13650,9 +14513,7 @@ focus_tree = {
 			add_to_variable = { CHI_trade_opinion_factor_diplomacy = -0.10 tooltip = trade_opinion_factor_tt }
 			newline = yes
 			every_other_country = {
-				limit = {
-					has_government = democratic
-				}
+				limit = { has_government = democratic }
 				add_opinion_modifier = {
 					target = ROOT
 					modifier = aggressive_diplomacy_penalty
@@ -13671,9 +14532,22 @@ focus_tree = {
 				date > 2017.1.1
 			}
 			modifier = {
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
-				date < 2012.1.1
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
+				NOT = { has_country_leader = { name = "Xi Jinping" } }
 			}
 		}
 	}
@@ -13726,8 +14600,20 @@ focus_tree = {
 				date < 2002.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -14944,8 +15830,16 @@ focus_tree = {
 				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -15006,8 +15900,20 @@ focus_tree = {
 				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -15049,8 +15955,16 @@ focus_tree = {
 				date < 2013.1.1
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -15094,8 +16008,20 @@ focus_tree = {
 				date < 2013.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -15237,8 +16163,16 @@ focus_tree = {
 				date < 2013.1.1
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -15295,8 +16229,20 @@ focus_tree = {
 				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -15322,9 +16268,7 @@ focus_tree = {
 			add_to_variable = { CHI_chinese_aggression = -1 tooltip = CHI_chinese_aggression_tt }
 			clamp_variable = { var = CHI_chinese_aggression min = -50 max = 50 }
 			every_other_country = {
-				limit = {
-					has_opinion_modifier = focac_member
-				}
+				limit = { has_opinion_modifier = focac_member }
 				add_opinion_modifier = {
 					target = ROOT
 					modifier = confucius_institute
@@ -15459,9 +16403,7 @@ focus_tree = {
 			unlock_decision_tooltip = CHI_Asset_Seizure
 			add_to_variable = { CHI_bri_returns_multiplier_base = 0.20 tooltip = CHI_bri_returns_multiplier_tt }
 			every_other_country = {
-				limit = {
-					has_government = democratic
-				}
+				limit = { has_government = democratic }
 				add_opinion_modifier = {
 					target = ROOT
 					modifier = predatory_lender
@@ -15476,8 +16418,20 @@ focus_tree = {
 				date < 2013.1.1
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -15512,8 +16466,16 @@ focus_tree = {
 				date < 2013.1.1
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
 			}
 		}
 	}
@@ -15750,7 +16712,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_Renminbi_Internationalization"
 			add_ideas = rmb_reserve_currency
-			if = {
+			every_country = {
 				limit = { has_idea = chinese_yuan }
 				swap_ideas = { remove_idea = chinese_yuan add_idea = chinese_yuan_2 }
 			}
@@ -16747,8 +17709,16 @@ focus_tree = {
 				}
 			}
 			modifier = {
-				add = 2
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -16796,8 +17766,20 @@ focus_tree = {
 				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
-				add = 2
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -17017,9 +17999,7 @@ focus_tree = {
 
 		available = {
 			country_exists = SOL
-			SOL = {
-				has_opinion_modifier = CHI_pacific_pivot_partner
-			}
+			SOL = { has_opinion_modifier = CHI_pacific_pivot_partner }
 		}
 
 		completion_reward = {
@@ -17573,7 +18553,7 @@ focus_tree = {
 		id = CHI_coastal_sez_2nd_generation
 		icon = crane_and_tower
 
-		x = 154
+		x = 162
 		y = 0
 
 		cost = 7
@@ -18974,7 +19954,7 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_water_security_initiative"
-			unlock_decision_category_tooltip = CHI_water_shortage_category
+			unlock_decision_tooltip = CHI_water_conservation_project
 		}
 
 		ai_will_do = {
@@ -20543,8 +21523,13 @@ focus_tree = {
 				date < 2004.1.1
 			}
 			modifier = {
-				add = 5
-				is_historical_focus_on = yes
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
 			}
 		}
 	}
@@ -20726,8 +21711,13 @@ focus_tree = {
 				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
-				add = 5
-				is_historical_focus_on = yes
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
 			}
 		}
 	}
@@ -20884,9 +21874,7 @@ focus_tree = {
 			}
 			if = {
 				limit = { has_dlc = "Arms Against Tyranny" }
-				mio:CHI_avic_manufacturer = {
-					unlock_mio_trait_tooltip = CHI_kirin_avionics_trait
-				}
+				mio:CHI_avic_manufacturer = { unlock_mio_trait_tooltip = CHI_kirin_avionics_trait }
 			}
 			else = {
 				add_tech_bonus = {
@@ -21009,7 +21997,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = CHI_loongson_riscv
 				category = CAT_microchips
-				ahead_reduction = 5
+				ahead_reduction = 2.5
 				uses = 1
 			}
 			random_country = {
@@ -21045,8 +22033,13 @@ focus_tree = {
 				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
-				add = 5
-				is_historical_focus_on = yes
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
 			}
 		}
 	}
@@ -21154,8 +22147,13 @@ focus_tree = {
 				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
-				add = 5
-				is_historical_focus_on = yes
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
 			}
 		}
 	}
@@ -21194,7 +22192,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = CHI_smee_lithography
 				category = CAT_computing_tech
-				ahead_reduction = 5
+				ahead_reduction = 2.5
 				uses = 1
 			}
 			newline = yes
@@ -22107,7 +23105,7 @@ focus_tree = {
 
 	focus = {
 		id = CHI_tencent_games_publisher
-		icon = JAP_game_industry
+		icon = qq
 
 		x = -2
 		y = 2
@@ -22748,7 +23746,7 @@ focus_tree = {
 		id = CHI_SAR_one_china_framework
 		icon = one_china_policy_prc
 
-		x = 222
+		x = 110
 		y = 0
 
 		cost = 5
@@ -22858,8 +23856,20 @@ focus_tree = {
 				date < 2004.1.1
 			}
 			modifier = {
-				is_historical_focus_on = yes
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
 				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -23047,8 +24057,16 @@ focus_tree = {
 				date < 2020.1.1
 			}
 			modifier = {
-				add = 1
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -23441,8 +24459,20 @@ focus_tree = {
 				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
-				add = 1
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -23523,8 +24553,16 @@ focus_tree = {
 				date < 2006.1.1
 			}
 			modifier = {
-				add = 1
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -23711,7 +24749,7 @@ focus_tree = {
 			HKG = { every_unit_leader = { set_nationality = CHI } }
 			595 = {
 				add_core_of = CHI
-				remove_dynamic_modifier = { modifier = CHI_HKG_sinicization_modifier }
+				if = { limit = { has_dynamic_modifier = { modifier = CHI_HKG_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_HKG_sinicization_modifier } }
 				remove_core_of = HKG
 			}
 			newline = yes
@@ -23746,7 +24784,7 @@ focus_tree = {
 				limit = { 595 = { owns_or_subject_of = yes } }
 				595 = {
 					add_core_of = CHI
-					remove_dynamic_modifier = { modifier = CHI_HKG_sinicization_modifier }
+					if = { limit = { has_dynamic_modifier = { modifier = CHI_HKG_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_HKG_sinicization_modifier } }
 					remove_core_of = HKG
 				}
 				custom_effect_tooltip = {
@@ -23859,7 +24897,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = CHI_HKG_2030_study
 				uses = 1
-				ahead_reduction = 5
+				ahead_reduction = 2.5
 				category = CAT_construction_tech
 			}
 		}
@@ -24028,9 +25066,7 @@ focus_tree = {
 			}
 			if = {
 				limit = { has_dlc = "Arms Against Tyranny" }
-				mio:CHI_crrc_manufacturer = {
-					add_mio_task_capacity = 1
-				}
+				mio:CHI_crrc_manufacturer = { add_mio_task_capacity = 1 }
 			}
 			two_random_industrial_complex = yes
 		}
@@ -24323,8 +25359,13 @@ focus_tree = {
 				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
-				add = 1
-				is_historical_focus_on = yes
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
 			}
 		}
 	}
@@ -24421,8 +25462,20 @@ focus_tree = {
 				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
-				add = 1
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -24674,8 +25727,16 @@ focus_tree = {
 				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
-				add = 1
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -24819,7 +25880,7 @@ focus_tree = {
 			MAC = { every_unit_leader = { set_nationality = CHI } }
 			1106 = {
 				add_core_of = CHI
-				remove_dynamic_modifier = { modifier = CHI_MAC_sinicization_modifier }
+				if = { limit = { has_dynamic_modifier = { modifier = CHI_MAC_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_MAC_sinicization_modifier } }
 				remove_core_of = MAC
 			}
 			annex_country = { target = MAC transfer_troops = yes }
@@ -24831,7 +25892,7 @@ focus_tree = {
 				limit = { 1106 = { owns_or_subject_of = yes } }
 				1106 = {
 					add_core_of = CHI
-					remove_dynamic_modifier = { modifier = CHI_MAC_sinicization_modifier }
+					if = { limit = { has_dynamic_modifier = { modifier = CHI_MAC_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_MAC_sinicization_modifier } }
 					remove_core_of = MAC
 				}
 			}
@@ -24984,8 +26045,16 @@ focus_tree = {
 				date < 2004.1.1
 			}
 			modifier = {
-				add = 1
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -25117,8 +26186,20 @@ focus_tree = {
 				date < 2004.1.1
 			}
 			modifier = {
-				add = 1
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -25364,8 +26445,20 @@ focus_tree = {
 				date < 2007.1.1
 			}
 			modifier = {
-				add = 1
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -25501,7 +26594,7 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_SAR_integrate_TIB"
 			589 = {
 				add_core_of = CHI
-				remove_dynamic_modifier = { modifier = CHI_TIB_sinicization_modifier }
+				if = { limit = { has_dynamic_modifier = { modifier = CHI_TIB_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_TIB_sinicization_modifier } }
 				force_disable_resistance = { clear = yes occupier = CHI occupied = CHI }
 				remove_core_of = TIB
 			}
@@ -25513,7 +26606,7 @@ focus_tree = {
 				limit = { 589 = { is_owned_by = CHI } }
 				589 = {
 					add_core_of = CHI
-					remove_dynamic_modifier = { modifier = CHI_TIB_sinicization_modifier }
+					if = { limit = { has_dynamic_modifier = { modifier = CHI_TIB_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_TIB_sinicization_modifier } }
 					force_disable_resistance = { clear = yes occupier = CHI occupied = CHI }
 					remove_core_of = TIB
 				}
@@ -25527,8 +26620,16 @@ focus_tree = {
 				date < 2007.1.1
 			}
 			modifier = {
-				add = 1
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -26033,8 +27134,16 @@ focus_tree = {
 				date < 2014.1.1
 			}
 			modifier = {
-				add = 1
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -26218,13 +27327,13 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_SAR_integrate_ETK"
 			592 = {
 				add_core_of = CHI
-				remove_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier }
+				if = { limit = { has_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier } }
 				force_disable_resistance = { clear = yes occupier = CHI occupied = CHI }
 				remove_core_of = ETK
 			}
 			591 = {
 				add_core_of = CHI
-				remove_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier }
+				if = { limit = { has_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier } }
 				remove_core_of = ETK
 			}
 			newline = yes
@@ -26241,13 +27350,13 @@ focus_tree = {
 				limit = { 592 = { is_owned_by = CHI } }
 				592 = {
 					add_core_of = CHI
-					remove_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier }
+					if = { limit = { has_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier } }
 					force_disable_resistance = { clear = yes occupier = CHI occupied = CHI }
 					remove_core_of = ETK
 				}
 				591 = {
 					add_core_of = CHI
-					remove_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier }
+					if = { limit = { has_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier } }
 					remove_core_of = ETK
 				}
 				custom_effect_tooltip = {
@@ -26336,8 +27445,20 @@ focus_tree = {
 				date < 2005.1.1
 			}
 			modifier = {
-				add = 1
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -26534,9 +27655,7 @@ focus_tree = {
 				modifier = political_outreach
 			}
 			TAI = {
-				hidden_effect = {
-					add_dynamic_modifier = { modifier = CHI_TAI_shared_modifier }
-				}
+				hidden_effect = { add_dynamic_modifier = { modifier = CHI_TAI_shared_modifier } }
 				custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_TAI_shared_modifier }
 				add_to_variable = { CHI_TAI_stability_factor = -0.03 tooltip = stability_factor_tt }
 				add_to_variable = { CHI_TAI_democratic_drift = -0.02 tooltip = democratic_drift_tt }
@@ -26548,11 +27667,23 @@ focus_tree = {
 			base = 8
 			modifier = {
 				factor = 0
-				is_historical_focus_on = yes
+				date < 2005.1.1
+			}
+			modifier = {
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 			modifier = {
 				factor = 0
-				date < 2005.1.1
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -26582,9 +27713,7 @@ focus_tree = {
 			}
 			newline = yes
 			custom_effect_tooltip = TT_IF_THEY_REJECT
-			effect_tooltip = {
-				unlock_decision_tooltip = CHI_TAI_resend_economic_track
-			}
+			effect_tooltip = { unlock_decision_tooltip = CHI_TAI_resend_economic_track }
 		}
 
 		ai_will_do = {
@@ -26660,9 +27789,7 @@ focus_tree = {
 			}
 			newline = yes
 			custom_effect_tooltip = TT_IF_THEY_REJECT
-			effect_tooltip = {
-				unlock_decision_tooltip = CHI_TAI_resend_expand_trade
-			}
+			effect_tooltip = { unlock_decision_tooltip = CHI_TAI_resend_expand_trade }
 		}
 
 		ai_will_do = {
@@ -26709,9 +27836,7 @@ focus_tree = {
 				add_opinion_modifier = { target = TAI modifier = CSSTA }
 			}
 			custom_effect_tooltip = TT_IF_THEY_REJECT
-			effect_tooltip = {
-				unlock_decision_tooltip = CHI_TAI_resend_mainland_access
-			}
+			effect_tooltip = { unlock_decision_tooltip = CHI_TAI_resend_mainland_access }
 		}
 
 		ai_will_do = {
@@ -26765,9 +27890,7 @@ focus_tree = {
 			}
 			newline = yes
 			custom_effect_tooltip = TT_IF_THEY_REJECT
-			effect_tooltip = {
-				unlock_decision_tooltip = CHI_TAI_resend_business_deleg
-			}
+			effect_tooltip = { unlock_decision_tooltip = CHI_TAI_resend_business_deleg }
 		}
 
 		ai_will_do = {
@@ -26813,9 +27936,7 @@ focus_tree = {
 			}
 			newline = yes
 			custom_effect_tooltip = TT_IF_THEY_REJECT
-			effect_tooltip = {
-				unlock_decision_tooltip = CHI_TAI_resend_transport
-			}
+			effect_tooltip = { unlock_decision_tooltip = CHI_TAI_resend_transport }
 		}
 
 		ai_will_do = {
@@ -26864,9 +27985,7 @@ focus_tree = {
 			}
 			newline = yes
 			custom_effect_tooltip = TT_IF_THEY_REJECT
-			effect_tooltip = {
-				unlock_decision_tooltip = CHI_TAI_resend_semiconductor
-			}
+			effect_tooltip = { unlock_decision_tooltip = CHI_TAI_resend_semiconductor }
 		}
 
 		ai_will_do = {
@@ -26919,9 +28038,7 @@ focus_tree = {
 			}
 			newline = yes
 			custom_effect_tooltip = TT_IF_THEY_REJECT
-			effect_tooltip = {
-				unlock_decision_tooltip = CHI_TAI_resend_safeguards
-			}
+			effect_tooltip = { unlock_decision_tooltip = CHI_TAI_resend_safeguards }
 		}
 
 		ai_will_do = {
@@ -26979,9 +28096,7 @@ focus_tree = {
 			}
 			newline = yes
 			custom_effect_tooltip = TT_IF_THEY_REJECT
-			effect_tooltip = {
-				unlock_decision_tooltip = CHI_TAI_resend_joint_planning
-			}
+			effect_tooltip = { unlock_decision_tooltip = CHI_TAI_resend_joint_planning }
 		}
 
 		ai_will_do = {
@@ -27038,9 +28153,7 @@ focus_tree = {
 			}
 			newline = yes
 			custom_effect_tooltip = TT_IF_THEY_REJECT
-			effect_tooltip = {
-				unlock_decision_tooltip = CHI_TAI_resend_deep_integration
-			}
+			effect_tooltip = { unlock_decision_tooltip = CHI_TAI_resend_deep_integration }
 		}
 
 		ai_will_do = {
@@ -27363,9 +28476,7 @@ focus_tree = {
 			}
 			newline = yes
 			custom_effect_tooltip = TT_IF_THEY_REJECT
-			effect_tooltip = {
-				unlock_decision_tooltip = CHI_TAI_resend_peaceful_reunification
-			}
+			effect_tooltip = { unlock_decision_tooltip = CHI_TAI_resend_peaceful_reunification }
 		}
 
 		ai_will_do = {
@@ -27373,6 +28484,22 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				date < 2015.1.1
+			}
+			modifier = {
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -27487,8 +28614,16 @@ focus_tree = {
 				has_active_mission = bankruptcy_incoming_collapse
 			}
 			modifier = {
-				add = 1
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -27554,6 +28689,10 @@ focus_tree = {
 				add = 1
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -27597,6 +28736,10 @@ focus_tree = {
 				add = 1
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -27619,7 +28762,7 @@ focus_tree = {
 			unlock_decision_tooltip = CHI_TAI_rocket_test
 			unlock_decision_tooltip = CHI_TAI_blockade_simulation
 			add_tech_bonus = {
-				name = CAT_missile
+				name = CHI_TAI_dongfeng_program
 				bonus = 0.50
 				uses = 2
 				category = CAT_missile
@@ -27635,6 +28778,10 @@ focus_tree = {
 			modifier = {
 				add = 1
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -27672,6 +28819,10 @@ focus_tree = {
 			modifier = {
 				add = 1
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -27713,6 +28864,10 @@ focus_tree = {
 			modifier = {
 				add = 1
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -27757,6 +28912,10 @@ focus_tree = {
 				add = 1
 				is_historical_focus_on = yes
 			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
 		}
 	}
 
@@ -27782,7 +28941,7 @@ focus_tree = {
 			newline = yes
 			every_other_country = {
 				limit = {
-					has_country_flag = Recognised_TAI
+					is_in_array = { recognised_countries = TAI }
 					exists = yes
 				}
 				country_event = { id = china_sar.023 days = 7 }
@@ -27791,10 +28950,10 @@ focus_tree = {
 			effect_tooltip = {
 				every_other_country = {
 					limit = {
-						has_country_flag = Recognised_TAI
+						is_in_array = { recognised_countries = TAI }
 						exists = yes
 					}
-					clr_country_flag = Recognised_@TAI
+					remove_from_array = { recognised_countries = TAI }
 					add_opinion_modifier = { target = CHI modifier = chi_tai_recognition_reward }
 				}
 			}
@@ -27837,19 +28996,20 @@ focus_tree = {
 			add_to_variable = { CHI_taiwan_us_support = -3 tooltip = CHI_taiwan_us_support_tt }
 			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
 			newline = yes
-			every_other_country = {
-				limit = {
-					has_country_flag = Recognised_TAI
-					exists = yes
-					NOT = { original_tag = CHI }
-					NOT = { original_tag = TAI }
-				}
-				if = {
-					limit = { ROOT = { has_dlc = "By Blood Alone" } }
-					ROOT = { send_embargo = PREV }
-				}
-				else = {
-					add_ideas = CHI_recognition_embargo
+			custom_effect_tooltip = CHI_TAI_intl_org_blockade_embargo_tt
+			hidden_effect = {
+				every_other_country = {
+					limit = {
+						is_in_array = { recognised_countries = TAI }
+						exists = yes
+						NOT = { original_tag = CHI }
+						NOT = { original_tag = TAI }
+					}
+					if = {
+						limit = { ROOT = { has_dlc = "By Blood Alone" } }
+						ROOT = { send_embargo = PREV }
+					}
+					else = { add_ideas = CHI_recognition_embargo }
 				}
 			}
 			newline = yes
@@ -28065,9 +29225,7 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_tourism_freeze"
 			add_to_variable = { CHI_taiwan_us_support = -2 tooltip = CHI_taiwan_us_support_tt }
 			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
-			TAI = {
-				add_ideas = CHI_TAI_tourism_ban
-			}
+			TAI = { add_ideas = CHI_TAI_tourism_ban }
 		}
 
 		ai_will_do = {
@@ -28086,7 +29244,7 @@ focus_tree = {
 	### FINALE — Operation Storm and post-war
 	focus = {
 		id = CHI_TAI_operation_storm
-		icon = focus_PRC_intimidate_warlords
+		icon = attack_taiwan
 
 		x = 0
 		y = 4
@@ -28137,8 +29295,20 @@ focus_tree = {
 				check_variable = { CHI_taiwan_us_support > 49 }
 			}
 			modifier = {
-				add = 1
+				factor = 150
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
 			}
 		}
 	}
@@ -28237,6 +29407,10 @@ focus_tree = {
 			modifier = {
 				add = 1
 				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
 			}
 		}
 	}
@@ -28482,8 +29656,16 @@ focus_tree = {
 				date < 2006.1.1
 			}
 			modifier = {
-				add = 1
-				is_historical_focus_on = yes
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
 			}
 		}
 	}
@@ -28556,8 +29738,20 @@ focus_tree = {
 				date < 2006.1.1
 			}
 			modifier = {
-				add = 1
+				factor = 150
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
 				is_historical_focus_on = yes
+				NOT = { has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH }
 			}
 		}
 	}
@@ -28651,12 +29845,12 @@ focus_tree = {
 				remove_core_of = OMG
 				force_disable_resistance = { clear = yes occupier = CHI occupied = CHI }
 				newline = yes
-				remove_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier }
+				if = { limit = { has_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier } }
 			}
 			1097 = {
 				add_core_of = CHI
 				remove_core_of = OMG
-				remove_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier }
+				if = { limit = { has_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier } }
 			}
 		}
 
@@ -28668,12 +29862,12 @@ focus_tree = {
 					add_core_of = CHI
 					remove_core_of = OMG
 					force_disable_resistance = { clear = yes occupier = CHI occupied = CHI }
-					remove_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier }
+					if = { limit = { has_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier } }
 				}
 				1097 = {
 					add_core_of = CHI
 					remove_core_of = OMG
-					remove_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier }
+					if = { limit = { has_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier } } remove_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier } }
 				}
 			}
 		}
@@ -28968,11 +30162,7 @@ focus_tree = {
 					add_state_core = 596
 					add_state_core = 597
 				}
-				MON = {
-					every_unit_leader = {
-						set_nationality = OMG
-					}
-				}
+				MON = { every_unit_leader = { set_nationality = OMG } }
 			}
 		}
 

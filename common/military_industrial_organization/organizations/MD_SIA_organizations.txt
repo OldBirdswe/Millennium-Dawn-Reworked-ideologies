@@ -17,7 +17,7 @@
 ## Each org defines an initial_trait (required for custom, non-`include` orgs to load) and
 ## every trait uses the standard free_trait_picks / small_expenditure completion cost,
 ## matching MD's other custom-tree countries.
-## Art: all using generic GFX slots pending custom icons.
+## Art: each org has a custom icon (gfx/interface/ideas/companies/Thailand/).
 
 ## ── DTI — Defence Technology Institute ─────────────────────────
 ## Founded 2008; modeled from game start for playability. National R&D agency — the
@@ -28,7 +28,7 @@
 ## (SAM vs AA-gun doctrine fork).
 SIA_dti_materiel_manufacturer = {
 	allowed = { original_tag = SIA }
-	icon = GFX_idea_slot_materiel_manufacturer
+	icon = GFX_idea_SIA_DTI
 	name = SIA_dti_materiel_manufacturer
 
 	task_capacity = 14
@@ -645,7 +645,7 @@ SIA_dti_materiel_manufacturer = {
 ## autocannon direct fire and an anti-armour cannon.
 SIA_chaiseri_tank_manufacturer = {
 	allowed = { original_tag = SIA }
-	icon = GFX_idea_slot_tank_manufacturer
+	icon = GFX_idea_SIA_Chaiseri
 	name = SIA_chaiseri_tank_manufacturer
 
 	task_capacity = 12
@@ -1171,7 +1171,7 @@ SIA_chaiseri_tank_manufacturer = {
 ## cannon or an assault-gun HE line, with a common-chassis production capstone feeding both.
 SIA_panus_tank_manufacturer = {
 	allowed = { original_tag = SIA }
-	icon = GFX_idea_slot_tank_manufacturer
+	icon = GFX_idea_SIA_Panus
 	name = SIA_panus_tank_manufacturer
 
 	task_capacity = 12
@@ -1676,7 +1676,7 @@ SIA_panus_tank_manufacturer = {
 ## a new undersea-warfare branch building the S26T-era submarine force.
 SIA_bangkok_dock_naval_manufacturer = {
 	allowed = { original_tag = SIA }
-	icon = GFX_idea_slot_naval_manufacturer
+	icon = GFX_idea_SIA_Bangkok_Dock
 	name = SIA_bangkok_dock_naval_manufacturer
 
 	task_capacity = 14
@@ -1713,7 +1713,7 @@ SIA_bangkok_dock_naval_manufacturer = {
 			military_industrial_organization_research_bonus = 0.05
 		}
 		production_bonus = {
-			production_efficiency_cap_factor = 0.05
+			production_capacity_factor = 0.05
 		}
 	}
 
@@ -1724,7 +1724,7 @@ SIA_bangkok_dock_naval_manufacturer = {
 		special_trait_background = yes
 		position = { x = 2 y = 0 }
 		production_bonus = {
-			production_efficiency_cap_factor = 0.05
+			production_resource_need_factor = -0.06
 			production_cost_factor = -0.05
 		}
 		on_complete = { expenditure_for_mio_upgrade = yes }
@@ -2044,7 +2044,7 @@ SIA_bangkok_dock_naval_manufacturer = {
 			max_strength = 0.15
 		}
 		production_bonus = {
-			production_efficiency_gain_factor = 0.1
+			production_capacity_factor = 0.10
 			production_cost_factor = -0.05
 		}
 		on_complete = { expenditure_for_mio_upgrade = yes }
@@ -2054,13 +2054,13 @@ SIA_bangkok_dock_naval_manufacturer = {
 	trait = {
 		token = SIA_bdock_modular_build
 		name = SIA_bdock_modular_build
-		icon = GFX_generic_mio_trait_icon_frigate_reliability
+		icon = GFX_generic_mio_trait_icon_frigate_resources
 		special_trait_background = yes
 		relative_position_id = SIA_bdock_shipyard_expertise
 		position = { x = 0 y = 1 }
 		all_parents = { SIA_bdock_shipyard_expertise }
 		production_bonus = {
-			production_efficiency_gain_factor = 0.1
+			production_resource_penalty_factor = -0.10
 			production_cost_factor = -0.05
 		}
 		on_complete = { expenditure_for_mio_upgrade = yes }
@@ -2200,7 +2200,7 @@ SIA_bangkok_dock_naval_manufacturer = {
 ## unmanned surface vessel line built around autonomy and low-cost attrition production.
 SIA_marsun_naval_manufacturer = {
 	allowed = { original_tag = SIA }
-	icon = GFX_idea_slot_naval_manufacturer
+	icon = GFX_idea_SIA_Marsun
 	name = SIA_marsun_naval_manufacturer
 
 	task_capacity = 7
@@ -2237,7 +2237,7 @@ SIA_marsun_naval_manufacturer = {
 			build_cost_ic = -0.05
 		}
 		production_bonus = {
-			production_efficiency_cap_factor = 0.05
+			production_capacity_factor = 0.05
 		}
 	}
 
@@ -2252,7 +2252,7 @@ SIA_marsun_naval_manufacturer = {
 			build_cost_ic = -0.1
 		}
 		production_bonus = {
-			production_efficiency_gain_factor = 0.1
+			production_cost_factor = -0.07
 		}
 		on_complete = { expenditure_for_mio_upgrade = yes }
 		ai_will_do = { base = 10 }
@@ -2445,7 +2445,7 @@ SIA_marsun_naval_manufacturer = {
 	trait = {
 		token = SIA_marsun_serial_production
 		name = SIA_marsun_serial_production
-		icon = GFX_generic_mio_trait_icon_efficiency_cap
+		icon = GFX_generic_mio_trait_icon_small_ship_resource
 		special_trait_background = yes
 		relative_position_id = SIA_marsun_small_hull
 		position = { x = 0 y = 1 }
@@ -2454,7 +2454,7 @@ SIA_marsun_naval_manufacturer = {
 			build_cost_ic = -0.05
 		}
 		production_bonus = {
-			production_efficiency_cap_factor = 0.1
+			production_resource_need_factor = -0.10
 		}
 		on_complete = { expenditure_for_mio_upgrade = yes }
 		ai_will_do = { base = 10 }
@@ -2715,7 +2715,7 @@ SIA_marsun_naval_manufacturer = {
 ## capstone) and a Trainer & Light Attack branch built on the T-50TH programme.
 SIA_tai_air_manufacturer = {
 	allowed = { original_tag = SIA }
-	icon = GFX_idea_slot_aircraft_manufacturer
+	icon = GFX_idea_SIA_TAI
 	name = SIA_tai_air_manufacturer
 
 	task_capacity = 18
@@ -3294,7 +3294,7 @@ SIA_tai_air_manufacturer = {
 ## fire control, and closes on body armour and night-vision soldier systems.
 SIA_did_materiel_manufacturer = {
 	allowed = { original_tag = SIA }
-	icon = GFX_idea_slot_materiel_manufacturer
+	icon = GFX_idea_SIA_DID
 	name = SIA_did_materiel_manufacturer
 
 	task_capacity = 14
@@ -3798,7 +3798,7 @@ SIA_did_materiel_manufacturer = {
 ## third branch fields loitering munitions and counter-UAV electronic warfare.
 SIA_rvconnex_air_manufacturer = {
 	allowed = { original_tag = SIA }
-	icon = GFX_idea_slot_aircraft_manufacturer
+	icon = GFX_idea_SIA_RV_Connex
 	name = SIA_rvconnex_air_manufacturer
 
 	task_capacity = 12

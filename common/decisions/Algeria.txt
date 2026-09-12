@@ -274,9 +274,7 @@ ALG_kabyle_issue = {
 
 		available = {
 			has_idea = ALG_kabylia_unrest
-			385 = {
-				resistance > 0
-			}
+			385 = { resistance > 0 }
 		}
 
 		cost = 0
@@ -430,7 +428,6 @@ ALG_political_struggle = {
 
 		available = {
 			has_power_balance = { id = algeria_power_balance }
-			has_political_power > 100
 			NOT = { has_country_flag = ALG_boosting_reformists }
 		}
 
@@ -477,6 +474,27 @@ ALG_political_struggle = {
 			modifier = {
 				factor = 0.2
 				power_balance_value = { id = algeria_power_balance value > 0.60 }
+				NOT = { has_global_flag = ALG_HIRAK_DEMOCRACY_FOCUS_PATH }
+				NOT = { has_global_flag = ALG_ISLAMIST_FOCUS_PATH }
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					has_global_flag = ALG_HIRAK_DEMOCRACY_FOCUS_PATH
+					has_global_flag = ALG_ISLAMIST_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0.1
+				OR = {
+					has_global_flag = ALG_LE_POUVOIR_FOCUS_PATH
+					has_global_flag = ALG_MILITARY_JUNTA_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				power_balance_value = { id = algeria_power_balance value > 0.75 }
+				has_global_flag = ALG_ISLAMIST_FOCUS_PATH
 			}
 		}
 	}
@@ -486,7 +504,6 @@ ALG_political_struggle = {
 
 		available = {
 			has_power_balance = { id = algeria_power_balance }
-			has_political_power > 100
 			NOT = { has_country_flag = ALG_boosting_old_guard }
 		}
 
@@ -530,11 +547,33 @@ ALG_political_struggle = {
 			modifier = {
 				factor = 0.2
 				power_balance_value = { id = algeria_power_balance value < -0.60 }
+				NOT = { has_global_flag = ALG_MILITARY_JUNTA_FOCUS_PATH }
 			}
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
 				date > 2014.1.1
+				NOT = { has_global_flag = ALG_LE_POUVOIR_FOCUS_PATH }
+				NOT = { has_global_flag = ALG_MILITARY_JUNTA_FOCUS_PATH }
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					has_global_flag = ALG_LE_POUVOIR_FOCUS_PATH
+					has_global_flag = ALG_MILITARY_JUNTA_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0.1
+				OR = {
+					has_global_flag = ALG_HIRAK_DEMOCRACY_FOCUS_PATH
+					has_global_flag = ALG_ISLAMIST_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				power_balance_value = { id = algeria_power_balance value < -0.75 }
+				has_global_flag = ALG_LE_POUVOIR_FOCUS_PATH
 			}
 		}
 	}
@@ -544,7 +583,6 @@ ALG_political_struggle = {
 
 		available = {
 			has_power_balance = { id = algeria_power_balance }
-			has_political_power > 75
 			NOT = { has_country_flag = ALG_rallying_students }
 		}
 
@@ -576,15 +614,31 @@ ALG_political_struggle = {
 				factor = 0.1
 				has_country_flag = ALG_crackdown_path
 			}
+			modifier = {
+				factor = 3
+				OR = {
+					has_global_flag = ALG_HIRAK_DEMOCRACY_FOCUS_PATH
+					has_global_flag = ALG_ISLAMIST_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0.2
+				power_balance_value = { id = algeria_power_balance value > 0.60 }
+				NOT = { has_global_flag = ALG_HIRAK_DEMOCRACY_FOCUS_PATH }
+			}
+			modifier = {
+				factor = 0
+				power_balance_value = { id = algeria_power_balance value > 0.75 }
+				has_global_flag = ALG_ISLAMIST_FOCUS_PATH
+			}
 		}
 	}
 
 	ALG_mobilize_veterans = {
-		icon = GFX_armed_forces_officers
+		icon = GFX_decision_generic_army_support
 
 		available = {
 			has_power_balance = { id = algeria_power_balance }
-			has_political_power > 75
 			NOT = { has_country_flag = ALG_mobilizing_veterans }
 		}
 
@@ -617,6 +671,18 @@ ALG_political_struggle = {
 				factor = 0.1
 				has_country_flag = ALG_reconciliation_path
 			}
+			modifier = {
+				factor = 3
+				OR = {
+					has_global_flag = ALG_LE_POUVOIR_FOCUS_PATH
+					has_global_flag = ALG_MILITARY_JUNTA_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0.2
+				power_balance_value = { id = algeria_power_balance value < -0.60 }
+				NOT = { has_global_flag = ALG_MILITARY_JUNTA_FOCUS_PATH }
+			}
 		}
 	}
 
@@ -625,7 +691,6 @@ ALG_political_struggle = {
 
 		available = {
 			has_power_balance = { id = algeria_power_balance }
-			has_political_power > 150
 			NOT = { has_country_flag = ALG_bribing_elites }
 		}
 
@@ -662,15 +727,26 @@ ALG_political_struggle = {
 				factor = 2
 				has_country_flag = ALG_crackdown_path
 			}
+			modifier = {
+				factor = 0.2
+				power_balance_value = { id = algeria_power_balance value < -0.60 }
+				NOT = { has_global_flag = ALG_MILITARY_JUNTA_FOCUS_PATH }
+			}
+			modifier = {
+				factor = 0.1
+				OR = {
+					has_global_flag = ALG_HIRAK_DEMOCRACY_FOCUS_PATH
+					has_global_flag = ALG_ISLAMIST_FOCUS_PATH
+				}
+			}
 		}
 	}
 
 	ALG_support_mujahideen = {
-		icon = GFX_decision_military_plan
+		icon = GFX_decision_generic_civil_support
 
 		available = {
 			has_power_balance = { id = algeria_power_balance }
-			has_political_power > 75
 			NOT = { has_country_flag = ALG_supporting_mujahideen }
 		}
 
@@ -701,6 +777,18 @@ ALG_political_struggle = {
 			modifier = {
 				factor = 2
 				power_balance_value = { id = algeria_power_balance value > 0.30 }
+			}
+			modifier = {
+				factor = 0.2
+				power_balance_value = { id = algeria_power_balance value < -0.60 }
+				NOT = { has_global_flag = ALG_MILITARY_JUNTA_FOCUS_PATH }
+			}
+			modifier = {
+				factor = 0.1
+				OR = {
+					has_global_flag = ALG_HIRAK_DEMOCRACY_FOCUS_PATH
+					has_global_flag = ALG_ISLAMIST_FOCUS_PATH
+				}
 			}
 		}
 	}
@@ -778,7 +866,6 @@ ALG_political_struggle = {
 
 		available = {
 			has_power_balance = { id = algeria_power_balance }
-			has_political_power > 50
 			NOT = { has_country_flag = ALG_running_media_campaign }
 		}
 
@@ -810,7 +897,6 @@ ALG_political_struggle = {
 
 		available = {
 			has_power_balance = { id = algeria_power_balance }
-			has_political_power > 50
 			NOT = { has_country_flag = ALG_running_security_crackdown }
 		}
 
@@ -920,7 +1006,6 @@ ALG_political_struggle = {
 		available = {
 			has_country_flag = ALG_crackdown_path
 			has_power_balance = { id = algeria_power_balance }
-			has_political_power > 50
 			NOT = { has_country_flag = ALG_crackdown_momentum_active }
 		}
 
@@ -958,7 +1043,6 @@ ALG_political_struggle = {
 		available = {
 			has_country_flag = ALG_reconciliation_path
 			has_power_balance = { id = algeria_power_balance }
-			has_political_power > 50
 			NOT = { has_country_flag = ALG_reconciliation_momentum_active }
 		}
 
@@ -1032,7 +1116,6 @@ ALG_political_struggle = {
 
 		available = {
 			has_power_balance = { id = algeria_power_balance }
-			has_political_power > 100
 			NOT = { has_country_flag = ALG_implementing_economic_reforms }
 		}
 
@@ -1089,7 +1172,7 @@ ALG_resistance_challenges_new = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision complete ALG_healthcare_reform"
 			custom_effect_tooltip = ALG_healthcare_success_tt
-			add_to_variable = { var = ALG_people_grievance value = 5 tooltip = ALG_people_grievance_factor_tt }
+			add_to_variable = { var = ALG_people_grievance value = -5 tooltip = ALG_people_grievance_factor_tt }
 			add_to_variable = { var = ALG_army_influence value = -3 tooltip = ALG_army_influence_factor_tt }
 			clamp_variable = { var = ALG_people_grievance min = 0 max = 100 }
 			clamp_variable = { var = ALG_army_influence min = 0 max = 100 }
@@ -1101,7 +1184,7 @@ ALG_resistance_challenges_new = {
 		timeout_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision ALG_healthcare_reform"
 			custom_effect_tooltip = ALG_healthcare_failure_tt
-			add_to_variable = { var = ALG_people_grievance value = -5 tooltip = ALG_people_grievance_factor_tt }
+			add_to_variable = { var = ALG_people_grievance value = 5 tooltip = ALG_people_grievance_factor_tt }
 			add_to_variable = { var = ALG_army_influence value = 5 tooltip = ALG_army_influence_factor_tt }
 			clamp_variable = { var = ALG_people_grievance min = 0 max = 100 }
 			clamp_variable = { var = ALG_army_influence min = 0 max = 100 }
@@ -1136,7 +1219,7 @@ ALG_resistance_challenges_new = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision complete ALG_education_reform"
 			custom_effect_tooltip = ALG_education_success_tt
-			add_to_variable = { var = ALG_people_grievance value = 5 tooltip = ALG_people_grievance_factor_tt }
+			add_to_variable = { var = ALG_people_grievance value = -5 tooltip = ALG_people_grievance_factor_tt }
 			add_to_variable = { var = ALG_army_influence value = -3 tooltip = ALG_army_influence_factor_tt }
 			clamp_variable = { var = ALG_people_grievance min = 0 max = 100 }
 			clamp_variable = { var = ALG_army_influence min = 0 max = 100 }
@@ -1148,7 +1231,7 @@ ALG_resistance_challenges_new = {
 		timeout_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision ALG_education_reform"
 			custom_effect_tooltip = ALG_education_failure_tt
-			add_to_variable = { var = ALG_people_grievance value = -5 tooltip = ALG_people_grievance_factor_tt }
+			add_to_variable = { var = ALG_people_grievance value = 5 tooltip = ALG_people_grievance_factor_tt }
 			add_to_variable = { var = ALG_army_influence value = 5 tooltip = ALG_army_influence_factor_tt }
 			clamp_variable = { var = ALG_people_grievance min = 0 max = 100 }
 			clamp_variable = { var = ALG_army_influence min = 0 max = 100 }
@@ -1187,7 +1270,7 @@ ALG_resistance_challenges_new = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision complete ALG_unemployment_reform"
 			custom_effect_tooltip = ALG_unemployment_success_tt
-			add_to_variable = { var = ALG_people_grievance value = 10 tooltip = ALG_people_grievance_factor_tt }
+			add_to_variable = { var = ALG_people_grievance value = -10 tooltip = ALG_people_grievance_factor_tt }
 			add_to_variable = { var = ALG_army_influence value = -5 tooltip = ALG_army_influence_factor_tt }
 			clamp_variable = { var = ALG_people_grievance min = 0 max = 100 }
 			clamp_variable = { var = ALG_army_influence min = 0 max = 100 }
@@ -1201,7 +1284,7 @@ ALG_resistance_challenges_new = {
 		timeout_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision ALG_unemployment_reform"
 			custom_effect_tooltip = ALG_unemployment_failure_tt
-			add_to_variable = { var = ALG_people_grievance value = -10 tooltip = ALG_people_grievance_factor_tt }
+			add_to_variable = { var = ALG_people_grievance value = 10 tooltip = ALG_people_grievance_factor_tt }
 			add_to_variable = { var = ALG_army_influence value = 8 tooltip = ALG_army_influence_factor_tt }
 			clamp_variable = { var = ALG_people_grievance min = 0 max = 100 }
 			clamp_variable = { var = ALG_army_influence min = 0 max = 100 }
@@ -1725,7 +1808,7 @@ ALG_resistance_movement = {
 }
 ALG_resistance_power_struggle = {
 	Resistance_support = {
-		icon = GFX_decision_resistance_support_button
+		icon = GFX_decision_infiltrate_state
 		cost = 100
 		days_remove = 60
 		fixed_random_seed = no
@@ -1765,11 +1848,27 @@ ALG_resistance_power_struggle = {
 			}
 		}
 
-		ai_will_do = { base = 1 }
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				OR = {
+					has_global_flag = ALG_FIS_UPRISING_FOCUS_PATH
+					has_global_flag = ALG_HIRAK_DEMOCRACY_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = ALG_LE_POUVOIR_FOCUS_PATH
+					has_global_flag = ALG_MILITARY_JUNTA_FOCUS_PATH
+				}
+			}
+		}
 	}
 
 	Le_Pouvoir_support = {
-		icon = GFX_decision_pouvoir_support_button
+		icon = GFX_decision_generic_speech
 		cost = 100
 		days_remove = 60
 		fixed_random_seed = no
@@ -1809,11 +1908,27 @@ ALG_resistance_power_struggle = {
 			}
 		}
 
-		ai_will_do = { base = 1 }
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				OR = {
+					has_global_flag = ALG_LE_POUVOIR_FOCUS_PATH
+					has_global_flag = ALG_MILITARY_JUNTA_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = ALG_FIS_UPRISING_FOCUS_PATH
+					has_global_flag = ALG_HIRAK_DEMOCRACY_FOCUS_PATH
+				}
+			}
+		}
 	}
 
 	Resistance_Final_Clash = {
-		icon = GFX_decision_resistance_final_button
+		icon = GFX_decisions_generic_counter_infiltration
 		days_mission_timeout = 90
 		fire_only_once = yes
 
@@ -1840,26 +1955,25 @@ ALG_resistance_power_struggle = {
 
 		timeout_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision Resistance_Final_Clash"
-			# If resistance is strong enough
 			if = {
 				limit = {
-					check_variable = { ALG_people_grievance > 64 }
+					check_variable = { ALG_people_grievance > 10 }
+					check_variable = { var = ALG_people_grievance value = ALG_army_influence compare = greater_than }
 				}
 				set_country_flag = ALG_resistance_wins
-				news_event = alg_resistance.1
+				country_event = alg_resistance.1
 			}
-			# If Le Pouvoir dominates
 			else_if = {
 				limit = {
-					check_variable = { ALG_army_influence > 64 }
+					check_variable = { ALG_army_influence > 10 }
+					check_variable = { var = ALG_army_influence value = ALG_people_grievance compare = greater_than }
 				}
 				set_country_flag = ALG_pouvoir_wins
 				news_event = alg_resistance.2
 			}
-			# If both sides are weak, chaos/junta
 			else = {
 				set_country_flag = ALG_junta
-				news_event = alg_resistance.3
+				country_event = alg_resistance.3
 			}
 		}
 	}
@@ -1892,46 +2006,52 @@ ALG_algeria_support_category = {
 					}
 				}
 			}
-			385 = {
+			random_owned_controlled_state = {
+				prioritize = { 385 }
 				create_unit = {
 					division = "name = \"Territorial Defense Brigade\" division_template = \"Territorial Defense Brigade\" start_experience_factor = 1.0"
-					prioritize_location = 7065
-					owner = ALG
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
 				}
 			}
-			386 = {
+			random_owned_controlled_state = {
+				prioritize = { 386 }
 				create_unit = {
 					division = "name = \"Territorial Defense Brigade\" division_template = \"Territorial Defense Brigade\" start_experience_factor = 1.0"
-					prioritize_location = 1145
-					owner = ALG
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
 				}
 			}
-			384 = {
+			random_owned_controlled_state = {
+				prioritize = { 384 }
 				create_unit = {
 					division = "name = \"Territorial Defense Brigade\" division_template = \"Territorial Defense Brigade\" start_experience_factor = 1.0"
-					prioritize_location = 11953
-					owner = ALG
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
 				}
 			}
-			383 = {
+			random_owned_controlled_state = {
+				prioritize = { 383 }
 				create_unit = {
 					division = "name = \"Territorial Defense Brigade\" division_template = \"Territorial Defense Brigade\" start_experience_factor = 1.0"
-					prioritize_location = 13074
-					owner = ALG
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
 				}
 			}
-			382 = {
+			random_owned_controlled_state = {
+				prioritize = { 382 }
 				create_unit = {
 					division = "name = \"Territorial Defense Brigade\" division_template = \"Territorial Defense Brigade\" start_experience_factor = 1.0"
-					prioritize_location = 10731
-					owner = ALG
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
 				}
 			}
-			381 = {
+			random_owned_controlled_state = {
+				prioritize = { 381 }
 				create_unit = {
 					division = "name = \"Territorial Defense Brigade\" division_template = \"Territorial Defense Brigade\" start_experience_factor = 1.0"
-					prioritize_location = 5095
-					owner = ALG
+					owner = ROOT
+					allow_spawning_on_enemy_provs = yes
 				}
 			}
 		}
@@ -1956,7 +2076,7 @@ ALG_algeria_support_category = {
 			add_command_power = -25
 			385 = {
 				create_unit = {
-					division = "name = \"3rd Separate Special-Purpose Brigade\" division_template = \"Internal Troops\" start_experience_factor = 1.2"
+					division = "name = \"3rd Separate Special-Purpose Brigade\" division_template = \"GIS\" start_experience_factor = 1.2"
 					prioritize_location = 7166
 					owner = ALG
 				}
@@ -2024,7 +2144,7 @@ ALG_de_arabisation_category = {
 	}
 
 	ALG_subsidise_amazigh_businesses = {
-		icon = decision_money_dec
+		icon = GFX_decision_generic_welfare
 		days_mission_timeout = 180
 		is_good = no
 		activation = { has_completed_focus = ALG_de_arabisation }
@@ -2061,7 +2181,7 @@ ALG_de_arabisation_category = {
 	}
 
 	ALG_return_amazigh_exiles = {
-		icon = GFX_goal_generic_political_reform
+		icon = GFX_decision_generic_political_discourse
 		days_mission_timeout = 200
 		is_good = no
 		activation = { has_completed_focus = ALG_de_arabisation }
@@ -2093,18 +2213,22 @@ ALG_de_arabisation_category = {
 	}
 
 	ALG_leave_arab_league = {
-		icon = GFX_decision_generic_political_pressure
+		icon = arab_federation_announce_button
 		days_mission_timeout = 180
 		is_good = no
 		activation = { has_completed_focus = ALG_de_arabisation }
 
 		available = {
 			has_country_flag = ALG_tamazgha_path
-			NOT = {
-				any_of_scopes = {
-					array = global.arab_league_members
-					NOT = { tag = ROOT }
-					is_in_faction_with = ROOT
+			custom_trigger_tooltip = {
+				tooltip = ALG_no_arab_league_faction_partner_tt
+				NOT = {
+					any_of_scopes = {
+						array = global.arab_league_members
+						exists = yes
+						NOT = { tag = ROOT }
+						is_in_faction_with = ROOT
+					}
 				}
 			}
 		}
@@ -2132,7 +2256,7 @@ ALG_de_arabisation_category = {
 	}
 
 	ALG_maintain_kabyle_relations = {
-		icon = GFX_goal_generic_population
+		icon = GFX_decision_generic_political_discourse
 		cost = 150
 		days_re_enable = 90
 
@@ -2164,7 +2288,7 @@ ALG_de_arabisation_category = {
 	}
 
 	ALG_boost_kabyle_population = {
-		icon = GFX_goal_generic_population
+		icon = GFX_decision_SWI_support_humanitarian_efforts
 		days_mission_timeout = 240
 		is_good = no
 		activation = { has_completed_focus = ALG_de_arabisation }
@@ -2318,18 +2442,11 @@ ALG_tamazgha_cultural_revival_category = {
 		available = {
 			has_country_flag = ALG_tamazgha_path
 			is_in_faction = no
-			any_other_country = {
-				OR = {
-					tag = MAU
-					tag = TUN
-					tag = MOR
-					tag = LBA
-				}
-				is_in_faction = no
-				has_opinion = {
-					target = ROOT
-					value > 49
-				}
+			OR = {
+				MAU = { is_in_faction = no has_opinion = { target = ROOT value > 49 } }
+				TUN = { is_in_faction = no has_opinion = { target = ROOT value > 49 } }
+				MOR = { is_in_faction = no has_opinion = { target = ROOT value > 49 } }
+				LBA = { is_in_faction = no has_opinion = { target = ROOT value > 49 } }
 			}
 		}
 
@@ -2342,22 +2459,10 @@ ALG_tamazgha_cultural_revival_category = {
 			set_temp_variable = { int_investment_change = 0.5 }
 			modify_international_investment_effect = yes
 			create_faction_from_template = faction_template_tamazgha_confederation
-			every_other_country = {
-				limit = {
-					OR = {
-						tag = MAU
-						tag = TUN
-						tag = MOR
-						tag = LBA
-					}
-					is_in_faction = no
-				}
-				set_country_flag = ALG_tamazgha_invitation_pending
-			}
-			every_other_country = {
-				limit = { has_country_flag = ALG_tamazgha_invitation_pending }
-				country_event = ALG_tamazgha.1
-			}
+			MAU = { if = { limit = { is_in_faction = no } set_country_flag = ALG_tamazgha_invitation_pending country_event = ALG_tamazgha.1 } }
+			TUN = { if = { limit = { is_in_faction = no } set_country_flag = ALG_tamazgha_invitation_pending country_event = ALG_tamazgha.1 } }
+			MOR = { if = { limit = { is_in_faction = no } set_country_flag = ALG_tamazgha_invitation_pending country_event = ALG_tamazgha.1 } }
+			LBA = { if = { limit = { is_in_faction = no } set_country_flag = ALG_tamazgha_invitation_pending country_event = ALG_tamazgha.1 } }
 			custom_effect_tooltip = ALG_tamazgha_regional_cooperation_complete_TT
 			#set_country_flag = ALG_tamazgha_regional_cooperation_done
 		}
@@ -2374,7 +2479,7 @@ ALG_tamazgha_cultural_revival_category = {
 ALG_casablanca_decisions = {
 	ALG_casablanca_mission = {
 		fixed_random_seed = no
-		icon = GFX_west_sahara2
+		icon = GFX_decision_oppression
 
 		activation = {
 			has_country_flag = algeria_casablanca_unlocked
@@ -2454,7 +2559,7 @@ ALG_casablanca_decisions = {
 	}
 
 	ALG_casablanca_approach_great_powers = {
-		icon = GFX_generic_meeting
+		icon = GFX_decision_SOV_place_hq
 		visible = { has_country_flag = algeria_casablanca_unlocked }
 
 		available = {
@@ -2490,7 +2595,7 @@ ALG_casablanca_decisions = {
 	}
 
 	ALG_casablanca_approach_regional = {
-		icon = GFX_generic_meeting
+		icon = GFX_decision_SWI_no_elected_president
 		visible = { has_country_flag = algeria_casablanca_unlocked }
 
 		available = {
@@ -2530,7 +2635,7 @@ ALG_casablanca_decisions = {
 	}
 
 	ALG_casablanca_approach_mixed = {
-		icon = GFX_generic_meeting
+		icon = GFX_decision_generic_political_address
 		visible = { has_country_flag = algeria_casablanca_unlocked }
 
 		available = {
@@ -2573,7 +2678,7 @@ ALG_casablanca_decisions = {
 }
 ALG_uav_procurement_category = {
 	ALG_purchase_turkish_uavs = {
-		icon = GFX_arm_drone_button
+		icon = GFX_decision_turkish_guns
 
 		visible = {
 			has_country_flag = ALG_uav_procurement_open
@@ -2632,7 +2737,7 @@ ALG_uav_procurement_category = {
 	}
 
 	ALG_purchase_chinese_uavs = {
-		icon = GFX_arm_drone_button
+		icon = GFX_decision_chinese_guns
 
 		visible = {
 			has_country_flag = ALG_uav_procurement_open
@@ -2691,7 +2796,7 @@ ALG_uav_procurement_category = {
 	}
 
 	ALG_purchase_iranian_uavs = {
-		icon = GFX_arm_drone_button
+		icon = GFX_decision_iran_guns
 
 		visible = {
 			has_country_flag = ALG_uav_procurement_open
@@ -2752,7 +2857,7 @@ ALG_uav_procurement_category = {
 
 ALG_drone_program_category = {
 	ALG_develop_amel_recon_uav = {
-		icon = GFX_missile_rocket_button
+		icon = GFX_decision_uav
 
 		visible = {
 			has_country_flag = ALG_drone_program_open
@@ -2817,7 +2922,7 @@ ALG_drone_program_category = {
 	}
 
 	ALG_develop_el_djazair_ucav = {
-		icon = GFX_missile_rocket_button
+		icon = GFX_decision_uav
 
 		visible = {
 			has_country_flag = ALG_drone_program_open
@@ -2838,7 +2943,7 @@ ALG_drone_program_category = {
 			modify_treasury_effect = yes
 			custom_effect_tooltip = ALG_ucav_developed_tt
 			add_tech_bonus = {
-				name = ALG_ucav_development
+				name = ALG_develop_el_djazair_ucav
 				bonus = 0.75
 				uses = 1
 				category = CAT_drones
@@ -2866,7 +2971,7 @@ ALG_drone_program_category = {
 	}
 
 	ALG_develop_swarm_loitering = {
-		icon = GFX_missile_rocket_button
+		icon = GFX_decision_uav
 
 		visible = {
 			has_country_flag = ALG_drone_program_open

@@ -154,7 +154,6 @@ country_event = {
 
 	option = { # Deny
 		name = hezbollah_events.3.o1
-		log = "[GetDateText]: [This.GetName]:hezbollah_events.3.o1 executed"
 		ai_chance = {
 			base = 3
 			modifier = {
@@ -293,28 +292,37 @@ country_event = {
 				amount = -300
 			}
 			add_equipment_to_stockpile = {
-				type = Anti_air_2
+				type = Anti_Air_2
 				amount = -100
 			}
 			add_manpower = -450
 		}
-		start_border_war = {
-			change_state_after_war = no
-			attacker = {
-				state = 205
-				num_provinces = 1
-				on_win = axis_of_resistance_events.7
-				on_lose = axis_of_resistance_events.7
-				on_cancel = axis_of_resistance_events.7
-				dig_in_factor = 0.5
-				terrain_factor = 0.1
+		if = {
+			limit = {
+				205 = {
+					NOT = { has_border_war = yes }
+					CONTROLLER = { NOT = { controls_state = 201 } }
+				}
+				201 = { NOT = { has_border_war = yes } }
 			}
-			defender = {
-				state = 201
-				num_provinces = 1
-				on_win = axis_of_resistance_events.7
-				on_lose = axis_of_resistance_events.7
-				on_cancel = axis_of_resistance_events.7
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 205
+					num_provinces = 1
+					on_win = axis_of_resistance_events.7
+					on_lose = axis_of_resistance_events.7
+					on_cancel = axis_of_resistance_events.7
+					dig_in_factor = 0.5
+					terrain_factor = 0.1
+				}
+				defender = {
+					state = 201
+					num_provinces = 1
+					on_win = axis_of_resistance_events.7
+					on_lose = axis_of_resistance_events.7
+					on_cancel = axis_of_resistance_events.7
+				}
 			}
 		}
 		news_event = hezbollah_events.27
@@ -338,7 +346,7 @@ country_event = {
 				amount = -300
 			}
 			add_equipment_to_stockpile = {
-				type = Anti_air_2
+				type = Anti_Air_2
 				amount = -100
 			}
 			add_manpower = -450
@@ -392,7 +400,7 @@ country_event = {
 				amount = -300
 			}
 			add_equipment_to_stockpile = {
-				type = Anti_air_2
+				type = Anti_Air_2
 				amount = -100
 			}
 			add_manpower = -450
@@ -421,7 +429,7 @@ country_event = {
 				amount = -300
 			}
 			add_equipment_to_stockpile = {
-				type = Anti_air_2
+				type = Anti_Air_2
 				amount = -100
 			}
 			add_manpower = -450
@@ -440,7 +448,13 @@ country_event = {
 	picture = GFX_recruit_militia_soldiers
 	is_triggered_only = yes
 
-	immediate = { set_variable = { the_country_that_hezbollah_is_currently_doing_a_mission_in = 0 } }
+	immediate = {
+		set_variable = { the_country_that_hezbollah_is_currently_doing_a_mission_in = 0 }
+		if = {
+			limit = { is_ai = no }
+			update_hez_international_dirty_variable = yes
+		}
+	}
 
 	option = {
 		name = international_hezbollah.1.o1
@@ -456,7 +470,13 @@ country_event = {
 	picture = GFX_sell_weapons_ak
 	is_triggered_only = yes
 
-	immediate = { set_variable = { the_country_that_hezbollah_is_currently_doing_a_mission_in = 0 } }
+	immediate = {
+		set_variable = { the_country_that_hezbollah_is_currently_doing_a_mission_in = 0 }
+		if = {
+			limit = { is_ai = no }
+			update_hez_international_dirty_variable = yes
+		}
+	}
 
 	option = {
 		name = international_hezbollah.2.o1
@@ -475,7 +495,13 @@ country_event = {
 	picture = GFX_hezbollah_influence
 	is_triggered_only = yes
 
-	immediate = { set_variable = { the_country_that_hezbollah_is_currently_doing_a_mission_in = 0 } }
+	immediate = {
+		set_variable = { the_country_that_hezbollah_is_currently_doing_a_mission_in = 0 }
+		if = {
+			limit = { is_ai = no }
+			update_hez_international_dirty_variable = yes
+		}
+	}
 
 	option = {
 		name = international_hezbollah.3.o1
@@ -496,7 +522,13 @@ country_event = {
 	picture = GFX_fucked_up_israeli_tank
 	is_triggered_only = yes
 
-	immediate = { set_variable = { the_country_that_hezbollah_is_currently_doing_a_mission_in = 0 } }
+	immediate = {
+		set_variable = { the_country_that_hezbollah_is_currently_doing_a_mission_in = 0 }
+		if = {
+			limit = { is_ai = no }
+			update_hez_international_dirty_variable = yes
+		}
+	}
 
 	option = {
 		name = international_hezbollah.4.o1
@@ -590,7 +622,7 @@ country_event = {
 				amount = 35
 			}
 			add_equipment_to_stockpile = {
-				type = Anti_air_0
+				type = Anti_Air_0
 				amount = 35
 			}
 			army_experience = 15
@@ -638,7 +670,7 @@ country_event = {
 					amount = 100
 				}
 				add_equipment_to_stockpile = {
-					type = Anti_air_0
+					type = Anti_Air_0
 					amount = 100
 				}
 				army_experience = 30
@@ -762,7 +794,7 @@ country_event = {
 				amount = 20
 			}
 			add_equipment_to_stockpile = {
-				type = Anti_air_0
+				type = Anti_Air_0
 				amount = 20
 			}
 			army_experience = 5
@@ -794,7 +826,7 @@ country_event = {
 				amount = 20
 			}
 			add_equipment_to_stockpile = {
-				type = Anti_air_2
+				type = Anti_Air_2
 				amount = 20
 			}
 			army_experience = 5
@@ -843,7 +875,7 @@ country_event = {
 					amount = 35
 				}
 				add_equipment_to_stockpile = {
-					type = Anti_air_2
+					type = Anti_Air_2
 					amount = 35
 				}
 				army_experience = 15
@@ -875,7 +907,7 @@ country_event = {
 				amount = 100
 			}
 			add_equipment_to_stockpile = {
-				type = Anti_air_2
+				type = Anti_Air_2
 				amount = 100
 			}
 			army_experience = 30
@@ -1026,7 +1058,7 @@ country_event = {
 			amount = -150
 		}
 		add_equipment_to_stockpile = {
-			type = Anti_air_2
+			type = Anti_Air_2
 			amount = -150
 		}
 		add_manpower = -50
@@ -1064,7 +1096,7 @@ country_event = {
 			amount = -150
 		}
 		add_equipment_to_stockpile = {
-			type = Anti_air_2
+			type = Anti_Air_2
 			amount = -150
 		}
 		add_manpower = -50
@@ -1142,23 +1174,31 @@ country_event = {
 		name = hezbollah_events.29.o1
 		log = "[GetDateText]: [This.GetName]: hezbollah_events.29.o1 executed"
 		# Attacker is Israel
-		start_border_war = {
-			change_state_after_war = no
-			attacker = {
-				state = 205
-				num_provinces = 1
-				on_win = hezbollah_events.30
-				on_lose = hezbollah_events.312
-				on_cancel = hezbollah_events.33
-				dig_in_factor = 0
-				terrain_factor = 0
+		if = {
+			limit = {
+				controls_state = 205
+				NOT = { controls_state = 201 }
+				205 = { NOT = { has_border_war = yes } }
+				201 = { NOT = { has_border_war = yes } }
 			}
-			defender = {
-				state = 201
-				num_provinces = 1
-				on_win = hezbollah_events.30
-				on_lose = hezbollah_events.31
-				on_cancel = hezbollah_events.33
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 205
+					num_provinces = 1
+					on_win = hezbollah_events.30
+					on_lose = hezbollah_events.312
+					on_cancel = hezbollah_events.33
+					dig_in_factor = 0
+					terrain_factor = 0
+				}
+				defender = {
+					state = 201
+					num_provinces = 1
+					on_win = hezbollah_events.30
+					on_lose = hezbollah_events.31
+					on_cancel = hezbollah_events.33
+				}
 			}
 		}
 		add_war_support = 0.1
@@ -1246,7 +1286,7 @@ country_event = {
 				amount = 150
 			}
 			add_equipment_to_stockpile = {
-				type = Anti_air_2
+				type = Anti_Air_2
 				amount = 150
 			}
 		}
@@ -1457,16 +1497,19 @@ country_event = {
 	immediate = {
 		log = "[GetDateText]: [This.GetName]: hezbollah_events.34.o1 executed"
 		if = {
-			limit = {
-				has_border_war_between = {
+			limit = { 205 = { has_border_war = yes } }
+			if = {
+				limit = {
+					has_border_war_between = {
+						attacker = 205
+						defender = 201
+					}
+				}
+				finalize_border_war = {
+					defender_win = yes
 					attacker = 205
 					defender = 201
 				}
-			}
-			finalize_border_war = {
-				defender_win = yes
-				attacker = 205
-				defender = 201
 			}
 		}
 	}
@@ -1506,7 +1549,6 @@ country_event = {
 
 	option = {
 		name = hezbollah_events.35.o2
-		log = "[GetDateText]: [This.GetName]: hezbollah_events.35.o2 executed"
 	}
 }
 
@@ -1531,7 +1573,6 @@ country_event = {
 
 	option = {
 		name = hezbollah_events.36.o2
-		log = "[GetDateText]: [This.GetName]: hezbollah_events.36.o2 executed"
 		ai_chance = {
 			base = 0
 		}
