@@ -1595,16 +1595,16 @@ capital = 34
 	add_opinion_modifier = { target = DEN modifier = nordic }
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 0.2
+		socialism = 8.4
+		social_democracy = 39.9
+		liberalism = 13.4
+		agrarianism = 6.2
+		libertarianism = 5
+		conservatism = 15.9
+		populism = 9.4
+		nationalism = 1.6
+		autocracy = 0
 	}
 	#set_popularities = {
 		##democratic = 69.2
@@ -1653,7 +1653,7 @@ capital = 34
 		name = "Göran Persson"
 		picture = "Goran_Persson.dds"
 		expire = "2010.1.1"
-		ideology = socialism
+		ideology = social_democracy
 		traits = {
 			western_socialism
 			career_politician

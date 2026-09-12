@@ -18,16 +18,16 @@ capital = 547
 	}
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 47.9
+		socialism = 12.7
+		social_democracy = 18
+		liberalism = 5.4
+		agrarianism = 1
+		libertarianism = 2
+		conservatism = 3.6
+		populism = 1.5
+		nationalism = 6.4
+		autocracy = 1.5
 	}
 	#set_popularities = {
 		###democratic = 27.0

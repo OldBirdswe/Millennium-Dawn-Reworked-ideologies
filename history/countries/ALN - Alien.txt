@@ -22,13 +22,13 @@
 		conservatism = 0
 		populism = 0
 		nationalism = 0
-		monarchism = 100
+		autocracy = 100
 	}
 	#set_popularities = {
 		###nationalist = 100.0
 	###}
 	set_politics = {
-		ruling_party = monarchism
+		ruling_party = autocracy
 		last_election = "1999.1.30"
 		elections_allowed = no
 	}

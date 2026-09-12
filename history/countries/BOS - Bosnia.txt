@@ -204,16 +204,16 @@ set_war_support = 0.27
 	set_variable = { var = population_tax_rate value = 10 }
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 3
+		socialism = 11
+		social_democracy = 27
+		liberalism = 0
+		agrarianism = 16
+		libertarianism = 5
+		conservatism = 30
+		populism = 8
+		nationalism = 0
+		autocracy = 0
 	}
 	#set_popularities = {
 		###democratic = 57.0
@@ -223,7 +223,7 @@ set_war_support = 0.27
 		###nationalist = 8.0
 	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = conservatism
 		last_election = "1998.09.12"
 		election_frequency = 48
 		elections_allowed = yes
@@ -252,7 +252,7 @@ set_war_support = 0.27
 	create_country_leader = {
 		name = "Alija Izetbegović"
 		picture = "alija_izetbegovic.dds"
-		ideology = conservatism
+		ideology = conservatives
 		traits = {
 			western_conservatism
 			Architect_of_Bosnian_Independence

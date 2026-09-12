@@ -1,20 +1,25 @@
 ### Ideologies
  ## communism 4, 19
  - marxist
+ - marxist_leninist
  - leninist
  - trotskyist
  - maoist
  - stalinist
- - syndicalist
  - anarchist
- - eco_communist
+ - eurocommunist
+ - councilist
  ## socialism 5, 18 some
  - socialist
  - democratic_socialist
  - radical_socialist
- - marxist_socialist
- - syndicalist_socialist
+ - syndicalist
  - eco_socialist
+ - market_socialist
+ - ethical_socialist
+ - christian_socialist
+ - buddhist_socialist
+ - islamic_socialist
  ## social_democracy, 3 & 18 some
  - social_democrat
  - progressive
@@ -31,25 +36,27 @@
  - neo_liberal
  - thatcherist
  - reaganist
- ## agrarianism 15, 17 
+ - eco_liberal
+ ## agrarianism 15, 17
  - agrarianist
  - centrist
- - eco_agrarianist
  - third_way
  - georgism
+ - eco_agrarianist
  ## libertarianism 16
  - libertarian
  - christian_libertarian
  - consequential_libertarian
- - naturalist_libertarian
+ - natural_rights_libertarian
  - technolibertarian
- - eco_libertarian
+ - enviromentalist
  ## conservatism 1, 6, 14
  - conservatives
  - liberal_conservatives
  - libertarian_conservatives
- - islamist_conservatives
  - national_conservatives
+ - islamist_conservatives
+ - green_conservatives
  ## populism 20, 12,
  - populist
  - national_populist
@@ -65,10 +72,10 @@
  - fascist
  - zionist
  - jihadist
- - eco_nationalist
- ## monarchism, 10, 11, 13, 23, 
+ - ecofascist
+ ## autocracy, 10, 11, 13, 23,
+ - autocrat
  - caliphate
  - monarchy
  - theocracy
- - autocrat
 

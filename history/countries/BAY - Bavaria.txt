@@ -79,16 +79,16 @@ capital = 43
 	inherit_technology = GER
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 1.2
+		socialism = 3.2
+		social_democracy = 28.7
+		liberalism = 1.7
+		agrarianism = 0.6
+		libertarianism = 7.5
+		conservatism = 52.9
+		populism = 3.6
+		nationalism = 0.3
+		autocracy = 0.3
 	}
 	#set_popularities = {
 		###democratic = 83.3
@@ -98,7 +98,7 @@ capital = 43
 		###nationalist = 3.8
 	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = conservatism
 		last_election = "1998.10.27"
 		election_frequency = 48
 		elections_allowed = yes
@@ -120,7 +120,7 @@ capital = 43
 	set_variable = { party_pop_array^21 = 0.002 } # NPD
 
 	# GOVERNMENT
-	add_to_array = { ruling_party = 1 } #socialist
+	add_to_array = { ruling_party = 1 } #conservative
 
 	# 1998 STATE ELECTION
 	set_variable = { party_pop_elect_array^1 = 0.529 } # CSU
@@ -138,7 +138,7 @@ capital = 43
 		name = "Edmund Rüdiger Stoiber"
 		picture = "edmund_bavaria.dds"
 		expire = "2007.9.18"
-		ideology = Conservative
+		ideology = conservatives
 		traits = {
 			lawyer
 			western_conservatism

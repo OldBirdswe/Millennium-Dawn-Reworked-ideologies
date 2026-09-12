@@ -383,16 +383,16 @@ capital = 51
 	set_variable = { var_reactor_material_stockpile = 5000 }
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 2.7
+		socialism = 0
+		social_democracy = 22.2
+		liberalism = 27.4
+		agrarianism = 14.3
+		libertarianism = 0
+		conservatism = 22
+		populism = 9.9
+		nationalism = 1.5
+		autocracy = 0
 	}
 	#set_popularities = {
 		###democratic = 71.6
@@ -402,7 +402,7 @@ capital = 51
 		###nationalist = 11.4
 	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = liberalism
 		last_election = "1999.6.13"
 		election_frequency = 48
 		elections_allowed = yes
@@ -427,7 +427,7 @@ capital = 51
 	create_country_leader = {
 		name = "Guy Verhofstadt"
 		picture = "Guy_Verhofstadt.dds"
-		ideology = liberalism
+		ideology = neo_liberal
 		traits = {
 			western_liberalism
 		}

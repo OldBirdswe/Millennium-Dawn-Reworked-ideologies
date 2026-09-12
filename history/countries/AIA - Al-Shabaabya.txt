@@ -168,7 +168,7 @@ capital = 1222
 		conservatism = 0
 		populism = 0
 		nationalism = 24
-		monarchism = 76
+		autocracy = 76
 	}
 	#set_popularities = {
 		###democratic = 0.0
@@ -178,7 +178,7 @@ capital = 1222
 		###nationalist = 0.0
 	###}
 	set_politics = {
-		ruling_party = monarchism
+		ruling_party = autocracy
 		last_election = "2000.11.10"
 		election_frequency = 48
 		elections_allowed = no

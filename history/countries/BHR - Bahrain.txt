@@ -266,16 +266,16 @@ capital = 423
 	set_variable = { overall_productivity = 775 }
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 1
+		socialism = 4
+		social_democracy = 1
+		liberalism = 1
+		agrarianism = 6.8
+		libertarianism = 1
+		conservatism = 30
+		populism = 11.5
+		nationalism = 31.2
+		autocracy = 11.5
 	}
 	#set_popularities = {
 		###democratic = 29.0
@@ -286,7 +286,7 @@ capital = 423
 	###}
 	set_politics = {
 
-		ruling_party = democratic
+		ruling_party = nationalism
 		last_election = "1999.3.6"
 		election_frequency = 48
 		elections_allowed = no
@@ -316,7 +316,7 @@ capital = 423
 	create_country_leader = {
 		name = "Hamad bin Isa Al Khalifa"
 		picture = "hamad_bin_Isa_Al_Khalifa.dds"
-		ideology = Western_Autocracy
+		ideology = nationalist
 		traits = {
 			king
 			western_Western_Autocracy

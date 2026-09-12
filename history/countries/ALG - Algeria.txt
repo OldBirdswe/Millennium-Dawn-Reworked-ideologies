@@ -296,7 +296,7 @@ set_research_slots = 4
 		conservatism = 12
 		populism = 18
 		nationalism = 24
-		monarchism = 0
+		autocracy = 0
 	}
 	#set_popularities = {
 		###democratic = 25.7

@@ -143,16 +143,16 @@ capital = 287
 	set_variable = { var = population_tax_rate value = 18 }
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 0.1
+		socialism = 12.9
+		social_democracy = 26.1
+		liberalism = 4.3
+		agrarianism = 0
+		libertarianism = 14.1
+		conservatism = 42.3
+		populism = 0
+		nationalism = 0
+		autocracy = 0.2
 	}
 	#set_popularities = {
 		###democratic = 30.4
@@ -162,7 +162,7 @@ capital = 287
 		###nationalist = 0.1
 	###}
 	set_politics = {
-		ruling_party = neutrality
+		ruling_party = conservatism
 		last_election = "1999.10.16"
 		election_frequency = 60
 		elections_allowed = yes
@@ -194,7 +194,7 @@ capital = 287
 		name = "Festus Mogae"
 		desc = "BOT_FESTUS_MOGAE_DESC"
 		picture = "festus_mogae.dds"
-		ideology = Neutral_conservatism
+		ideology = liberal_conservatives
 		traits = {
 			neutrality_Neutral_conservatism
 			experienced_banker

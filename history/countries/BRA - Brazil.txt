@@ -811,16 +811,16 @@ capital = 885
 	sort_influence = yes
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 1
+		socialism = 34
+		social_democracy = 13
+		liberalism = 45
+		agrarianism = 2
+		libertarianism = 1
+		conservatism = 1
+		populism = 3
+		nationalism = 0
+		autocracy = 0
 	}
 	#set_popularities = {
 		###democratic = 48.4
@@ -830,7 +830,7 @@ capital = 885
 		###nationalist = 0.2
 	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = liberalism
 		last_election = "1998.4.10"
 		election_frequency = 48
 		elections_allowed = yes
@@ -862,7 +862,7 @@ capital = 885
 	create_country_leader = {
 		name = "Fernando Henrique Cardoso"
 		picture = "Fernando_Henrique_Cardoso.dds"
-		ideology = liberalism
+		ideology = neo_liberal
 		traits = {
 			western_liberalism
 			pro_american

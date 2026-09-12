@@ -186,16 +186,16 @@ capital = 897
 	set_variable = { overall_productivity = 564 }
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 20
+		socialism = 0
+		social_democracy = 16.7
+		liberalism = 15.1
+		agrarianism = 18.2
+		libertarianism = 0
+		conservatism = 30
+		populism = 0
+		nationalism = 0
+		autocracy = 0
 	}
 	#set_popularities = {
 		###democratic = 61.8
@@ -205,7 +205,7 @@ capital = 897
 		###nationalist = 0.0
 	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = conservatism
 		last_election = "1999.6.13"
 		election_frequency = 48
 		elections_allowed = yes
@@ -231,7 +231,7 @@ capital = 897
 	create_country_leader = {
 		name = "Hugo Banzer"
 		picture = "hugo_banzer.dds"
-		ideology = conservatism
+		ideology = conservatives
 		traits = {
 			western_conservatism
 			military_career

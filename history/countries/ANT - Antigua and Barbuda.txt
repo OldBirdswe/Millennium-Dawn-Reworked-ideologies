@@ -145,7 +145,7 @@ oob = "GENERIC_OOB"
 		conservatism = 18
 		populism = 0
 		nationalism = 0
-		monarchism = 0
+		autocracy = 0
 	}
 	#set_popularities = {
 		###democratic = 27.3

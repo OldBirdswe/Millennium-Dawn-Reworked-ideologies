@@ -275,16 +275,16 @@ capital = 180
 	set_variable = { var = int_investments value = 1 }
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 1
+		socialism = 0
+		social_democracy = 0
+		liberalism = 0
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 75
+		populism = 20
+		nationalism = 2
+		autocracy = 2
 	}
 	#set_popularities = {
 		##democratic = 75.0
@@ -294,7 +294,7 @@ capital = 180
 		##nationalist = 1.0
 	##}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = conservatism
 		last_election = "1932.11.8"
 		election_frequency = 48
 		elections_allowed = no
@@ -322,7 +322,7 @@ capital = 180
 	create_country_leader = {
 		name = "Zayed bin Sultan Al Nahyan"
 		picture = "zayed_bin_sultan_al_nahyan.dds"
-		ideology = Western_Autocracy
+		ideology = islamist_conservatives
 		traits = {
 			king
 			western_Western_Autocracy

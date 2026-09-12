@@ -261,7 +261,7 @@ capital = 882
 		conservatism = 10.0
 		populism = 10.0
 		nationalism = 10.0
-		monarchism = 10.0
+		autocracy = 10.0
 	}
 	#set_popularities = {
 		##democratic = 70.0

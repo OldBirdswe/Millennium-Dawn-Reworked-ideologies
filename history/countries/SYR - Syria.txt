@@ -140,19 +140,19 @@ capital = 186
 	}
 
 	LEB = {
-	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
-	}
-	#set_popularities = {
+		set_popularities = {
+			communism = 10.0
+			socialism = 10.0
+			social_democracy = 10.0
+			liberalism = 10.0
+			agrarianism = 10.0
+			libertarianism = 10.0
+			conservatism = 10.0
+			populism = 10.0
+			nationalism = 10.0
+			autocracy = 10.0
+		}
+		#set_popularities = {
 			##democratic = 48.0
 			##communism = 20.0
 			##fascism = 0.0
@@ -297,10 +297,21 @@ capital = 186
 	add_to_array = { SYR.investment_targets = TAL }
 	add_to_array = { SYR.investment_targets = SAU }
 
-
+	set_popularities = {
+		communism = 3
+		socialism = 3
+		social_democracy = 5
+		liberalism = 0
+		agrarianism = 2
+		libertarianism = 0
+		conservatism = 2
+		populism = 6
+		nationalism = 75
+		autocracy = 2
+	}
 
 	set_politics = {
-		ruling_party = communism
+		ruling_party = nationalism
 		last_election = "1999.6.3"
 		election_frequency = 84
 		elections_allowed = no
@@ -336,7 +347,7 @@ capital = 186
 		name = "Hafez al-Assad"
 		picture = "Hafez_al-Assad.dds"
 		expire = "2001.1.1"
-		ideology = Autocracy
+		ideology = nationalist
 		traits = {
 			emerging_Autocracy
 			ruthless

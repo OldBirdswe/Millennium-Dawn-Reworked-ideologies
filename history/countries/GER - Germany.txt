@@ -2068,16 +2068,16 @@ capital = 45
 	}
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 0.4
+		socialism = 6.3
+		social_democracy = 40.9
+		liberalism = 6.2
+		agrarianism = 7
+		libertarianism = 0.3
+		conservatism = 35.1
+		populism = 1.8
+		nationalism = 0.8
+		autocracy = 1.2
 	}
 	#set_popularities = {
 		##democratic = 76
@@ -2087,7 +2087,7 @@ capital = 45
 		##nationalist = 3.9
 	##}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = social_democracy
 		last_election = "1997.4.19"
 		election_frequency = 48
 		elections_allowed = yes
@@ -2127,7 +2127,7 @@ capital = 45
 		desc = "POLITICS_GERHARD_SCHRODER_DESC"
 		picture = "Gerhard_Schroeder.dds"
 		expire = "2002.6.10"
-		ideology = socialism
+		ideology = social_democrat
 		traits = {
 			lawyer
 			western_socialism

@@ -185,16 +185,16 @@ capital = 416
 		}
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 0
+		socialism = 0
+		social_democracy = 0
+		liberalism = 5
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 20
+		populism = 15
+		nationalism = 15
+		autocracy = 45
 	}
 	#set_popularities = {
 		###democratic = 5.0
@@ -204,7 +204,7 @@ capital = 416
 		###nationalist = 15.0
 	###}
 	set_politics = {
-		ruling_party = fascism
+		ruling_party = autocracy
 		last_election = "1999.4.30"
 		election_frequency = 48
 		elections_allowed = yes
@@ -239,7 +239,7 @@ capital = 416
 	create_country_leader = {
 		name = "Abdolmalek Rigi"
 		picture = "abdolmalek_rigi.dds"
-		ideology = Caliphate
+		ideology = caliphate
 		traits = {
 			salafist_Caliphate
 		}

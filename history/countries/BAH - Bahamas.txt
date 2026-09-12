@@ -134,16 +134,16 @@ capital = 856
 	reverse_add_opinion_modifier = { target = GAH modifier = english_speaking }
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 0
+		socialism = 0
+		social_democracy = 0
+		liberalism = 47.9
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 52.1
+		populism = 0
+		nationalism = 0
+		autocracy = 0
 	}
 	#set_popularities = {
 		###democratic = 100.0
@@ -153,7 +153,7 @@ capital = 856
 		###nationalist = 0.0
 	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = conservatism
 		last_election = "1998.3.30"
 		election_frequency = 48
 		elections_allowed = yes
@@ -173,7 +173,7 @@ capital = 856
 	create_country_leader = {
 		name = "Hubert Ingraham"
 		picture = "hubert_ingraham.dds"
-		ideology = conservatism
+		ideology = conservatives
 		traits = {
 			western_conservatism
 		}

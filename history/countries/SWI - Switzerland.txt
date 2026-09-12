@@ -627,16 +627,16 @@ capital = 74
 
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 2
+		socialism = 0
+		social_democracy = 25
+		liberalism = 0
+		agrarianism = 8
+		libertarianism = 22
+		conservatism = 18
+		populism = 25
+		nationalism = 0
+		autocracy = 0
 	}
 	#set_popularities = {
 		##democratic = 25.0
@@ -675,7 +675,7 @@ capital = 74
 	create_country_leader = {
 		name = "Adolf Ogi"
 		picture = "Adolf_Ogi.dds"
-		ideology = Nat_Populism
+		ideology = populist
 		traits = {
 			nationalist_Nat_Populism
 			career_politician

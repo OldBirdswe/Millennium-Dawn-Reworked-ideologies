@@ -852,16 +852,16 @@ capital = 46
 
 	# Political Configuration
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 3.6
+		socialism = 9
+		social_democracy = 29
+		liberalism = 24.7
+		agrarianism = 7.3
+		libertarianism = 1.2
+		conservatism = 18.3
+		populism = 2
+		nationalism = 4.9
+		autocracy = 0
 	}
 	#set_popularities = {
 		##democratic = 72.0
@@ -871,7 +871,7 @@ capital = 46
 		##nationalist = 2.0
 	##}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = social_democracy
 		last_election = "1999.6.13"
 		election_frequency = 48
 		elections_allowed = yes
@@ -899,7 +899,7 @@ capital = 46
 	create_country_leader = {
 		name = "Wim Kok"
 		picture = "Wim_Kok.dds"
-		ideology = socialism
+		ideology = social_democrat
 		traits = {
 			western_socialism
 			union_man

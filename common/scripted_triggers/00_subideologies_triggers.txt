@@ -1,0 +1,386 @@
+### Written by Oldbird
+### These are sets of triggers meant to be used to specifiy ideologies in triggers.
+
+
+
+
+## The following triggers are specifically for the country leader and ->
+## are based out of ROOT and then party_leader.
+## Some trigger has a small comment to see exactly why and what they do
+## But the names themselves are descriptive
+
+# First checks if the nation has elections, then goes through any sub_ideologies that can have
+# democratic tendencies. Communism and nationalism are included because of internal elections in
+# states still happening. But the has_elections trigger will still remove the non-democratic nations
+has_democratic_leader = {
+	ROOT = {
+		has_elections = yes
+		party_leader = {
+			limit = {
+				OR = {
+					has_green_leader = yes
+					has_centrist_leader = yes
+					has_conservative_leader = yes
+					has_socialist_leader = yes
+					has_social_democrat_leader = yes
+					has_communist_leader = yes
+				}
+			}
+		}
+	}
+}
+
+has_religious_extemist_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = islamic_socialist
+					has_ideology = islamist_conservatives
+					has_ideology = shia_populist
+					has_ideology = sunni_populist
+					has_ideology = zionist
+					has_ideology = caliphate
+					has_ideology = theocracy
+					has_ideology = christian_libertarian
+					has_ideology = christian_populist
+					has_ideology = christian_socialist
+					has_ideology = buddhist_socialist
+					has_ideology = jihadist
+				}
+			}
+		}
+	}
+}
+
+has_green_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = green_conservatives
+					has_ideology = eco_agrarianist
+					has_ideology = eco_socialist
+					has_ideology = eco_liberal
+					has_ideology = enviromentalist
+					has_ideology = ecofascist
+				}
+			}
+		}
+	}
+}
+
+has_centrist_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = centrist
+					has_ideology = agrarianist
+					has_ideology = third_way
+					has_ideology = liberal
+					has_ideology = libertarian
+					has_ideology = enviromentalist
+				}
+			}
+		}
+	}
+}
+has_left_wing_extreme_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_communist_leader = yes
+					has_socialist_leader = yes
+
+				}
+			}
+		}
+	}
+}
+has_left_wing_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_socialist_leader = yes
+					has_social_democrat_leader = yes
+					has_ideology = enviromentalist
+				}
+			}
+		}
+	}
+}
+has_centre_left_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_social_democrat_leader = yes
+
+					has_ideology = third_way
+					has_ideology = eco_liberal
+
+					has_ideology = market_liberal
+					has_ideology = social_liberal
+					has_ideology = liberal
+				}
+			}
+		}
+	}
+}
+
+has_centre_right_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_conservative_leader = yes
+					has_libertarian_leader = yes
+
+					has_ideology = corporatist_liberal
+					has_ideology = technocrat
+					has_ideology = neo_liberal
+					has_ideology = reaganist
+					has_ideology = thatcherist
+
+					has_ideology = georgist
+				}
+			}
+		}
+	}
+}
+
+has_right_wing_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_conservative_leader = yes
+					has_populist_leader = yes
+					has_nationalist_leader = yes
+					has_autocratic_leader = yes
+				}
+			}
+		}
+	}
+}
+has_right_wing_extreme_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_populist_leader = yes
+					has_nationalist_leader = yes
+					has_autocratic_leader = yes
+				}
+			}
+		}
+	}
+}
+
+# A combination of Liberals and Libertarians + their two conservative wings
+has_free_minded_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_liberal_leader = yes
+					has_libertarian_leader
+					has_ideology = liberal_conservatives
+					has_ideology = libertarian_conservatives
+				}
+			}
+		}
+	}
+}
+# communist ideologies
+has_communist_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = marxist
+					has_ideology = marxist_leninist
+					has_ideology = leninist
+					has_ideology = trotskyist
+					has_ideology = maoist
+					has_ideology = stalinist
+					has_ideology = anarchist
+					has_ideology = eurocommunist
+					has_ideology = councilist
+				}
+			}
+		}
+	}
+}
+# socialist ideologies
+has_socialist_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = democratic_socialist
+					has_ideology = market_socialist
+					has_ideology = radical_socialist
+					has_ideology = syndicalist
+					has_ideology = eco_socialist
+					has_ideology = ethical_socialist
+					has_ideology = christian_socialist
+					has_ideology = buddhist_socialist
+					has_ideology = islamic_socialist
+				}
+			}
+		}
+	}
+}
+# social democratic ideologies
+has_social_democrat_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = social_democrat
+					has_ideology = progressive
+					has_ideology = guild_socialist
+					has_ideology = labour_unionist
+					has_ideology = reformist_socialist
+				}
+			}
+		}
+	}
+}
+# liberal ideologies
+has_liberal_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = liberal
+					has_ideology = market_liberal
+					has_ideology = corporatist_liberal
+					has_ideology = technocrat
+					has_ideology = neo_liberal
+					has_ideology = thatcherist
+					has_ideology = reaganist
+					has_ideology = eco_liberal
+				}
+			}
+		}
+	}
+}
+# agrarian ideologies
+has_agrarian_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = agrarianist
+					has_ideology = centrist
+					has_ideology = third_way
+					has_ideology = georgist
+					has_ideology = eco_agrarianist
+				}
+			}
+		}
+	}
+}
+# libertarian ideologies
+has_libertarian_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = libertarian
+					has_ideology = christian_libertarian
+					has_ideology = consequential_libertarian
+					has_ideology = natural_rights_libertarian
+					has_ideology = technolibertarian
+					has_ideology = enviromentalist
+				}
+			}
+		}
+	}
+}
+# conservative ideologies
+has_conservative_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = conservatives
+					has_ideology = liberal_conservatives
+					has_ideology = libertarian_conservatives
+					has_ideology = national_conservatives
+					has_ideology = islamist_conservatives
+					has_ideology = green_conservatives
+				}
+			}
+		}
+	}
+}
+# populist ideologies
+has_populist_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = populist
+					has_ideology = national_populist
+					#has_ideology = religious_populist
+					has_ideology = christian_populist
+					has_ideology = sunni_populist
+					has_ideology = shia_populist
+					has_ideology = oligarchy
+				}
+			}
+		}
+	}
+}
+# nationalist ideologies
+has_nationalist_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = nationalist
+					has_ideology = nazi
+					has_ideology = neo_nazi
+					has_ideology = zionist
+					has_ideology = jihadist
+					has_ideology = ecofascist
+				}
+			}
+		}
+	}
+}
+# autocratic ideologies
+has_autocratic_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = autocrat
+					has_ideology = monarchy
+					has_ideology = caliphate
+					has_ideology = theocracy
+				}
+			}
+		}
+	}
+}
+has_monarchical_leader = {
+	ROOT = {
+		party_leader = {
+			limit = {
+				OR = {
+					has_ideology = monarchy
+					has_ideology = caliphate
+				}
+			}
+		}
+	}
+}
+
+

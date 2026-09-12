@@ -146,16 +146,16 @@ capital = 865
 	set_variable = { overall_productivity = 1250 }
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 0
+		socialism = 0
+		social_democracy = 64.9
+		liberalism = 35.1
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 0
+		populism = 0
+		nationalism = 0
+		autocracy = 0
 	}
 	#set_popularities = {
 		###democratic = 100.0
@@ -165,7 +165,7 @@ capital = 865
 		###nationalist = 0.0
 	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = social_democracy
 		last_election = "1999.6.13"
 		election_frequency = 48
 		elections_allowed = yes
@@ -185,7 +185,7 @@ capital = 865
 	create_country_leader = {
 		name = "Owen Arthur"
 		picture = "owen_arthur.dds"
-		ideology = socialism
+		ideology = social_democrat
 		traits = {
 			western_socialism
 		}

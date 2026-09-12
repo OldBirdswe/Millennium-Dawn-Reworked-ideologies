@@ -1100,16 +1100,16 @@ capital = 91
 	give_guarantee = ADO #Spain and France are both responsible for Andorra's Defense
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 3
+		socialism = 12
+		social_democracy = 27
+		liberalism = 7
+		agrarianism = 5
+		libertarianism = 6
+		conservatism = 35
+		populism = 4
+		nationalism = 0
+		autocracy = 1
 	}
 	#set_popularities = {
 		##democratic = 62.0
@@ -1119,7 +1119,7 @@ capital = 91
 		##nationalist = 4.0
 	##}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = conservatism
 		last_election = "1996.3.1"
 		election_frequency = 48
 		elections_allowed = yes
@@ -1146,7 +1146,7 @@ capital = 91
 	create_country_leader = {
 		name = "José María Aznar"
 		picture = "jose_maria_aznar.dds"
-		ideology = conservatism
+		ideology = liberal_conservatives
 		traits = {
 			western_conservatism
 			lawyer

@@ -2639,16 +2639,16 @@ capital = 56
 	give_guarantee = COM
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 7
+		socialism = 5
+		social_democracy = 32
+		liberalism = 6
+		agrarianism = 11
+		libertarianism = 3
+		conservatism = 24
+		populism = 12
+		nationalism = 0
+		autocracy = 0
 	}
 	#set_popularities = {
 		##democratic = 62.0
@@ -2658,7 +2658,7 @@ capital = 56
 		##nationalist = 12.0
 	##}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = conservatism
 		last_election = "1997.6.1"
 		election_frequency = 60
 		elections_allowed = yes
@@ -2683,7 +2683,7 @@ capital = 56
 	create_country_leader = {
 		name = "Jacques Chirac"
 		picture = "jacques_chirac.dds"
-		ideology = conservatism
+		ideology = conservatives
 		traits = {
 			western_conservatism
 			career_politician

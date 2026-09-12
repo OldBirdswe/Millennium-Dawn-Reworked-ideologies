@@ -263,16 +263,16 @@ capital = 522
 	}
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 10
+		socialism = 57.5
+		social_democracy = 15
+		liberalism = 17.5
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 0
+		populism = 0
+		nationalism = 0
+		autocracy = 0
 	}
 	#set_popularities = {
 		##democratic = 32.5
@@ -282,7 +282,7 @@ capital = 522
 		##nationalist = 0.0
 	##}
 	set_politics = {
-		ruling_party = neutrality
+		ruling_party = socialism
 		last_election = 1932.11.8
 		election_frequency = 48
 		elections_allowed = no
@@ -309,7 +309,7 @@ capital = 522
 		name = "Trân Đúc Luong"
 		picture = "Tran_Duc_Luong.dds"
 		expire = "2012.1.1"
-		ideology = Neutral_Communism
+		ideology = socialist
 		traits = {
 			neutrality_Neutral_Communism
 		}

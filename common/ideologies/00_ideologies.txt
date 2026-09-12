@@ -5,22 +5,28 @@ ideologies = {
 
 			leninist = {}
 
+			marxist_leninist = {}
+
 			trotskyist = {}
 
 			maoist = {}
 
 			stalinist = {}
 
-			syndicalist = {
-				can_be_randomly_selected = no
-				color = { 227 6 19 }
-			}
-
 			anarchist = {
 				can_be_randomly_selected = no
 				color = { 0 0 0 }
 			}
-			eco_communist = { }
+
+			eurocommunist = {
+				# Save for EU nations / European nations because... well duh
+				can_be_randomly_selected = no
+			}
+
+			councilist = {
+				can_be_randomly_selected = no
+			}
+
 		}
 		color = { 119 15 0 }
 
@@ -68,11 +74,28 @@ ideologies = {
 
 			marxist_socialist = {}
 
-			syndicalist_socialist = {
+			syndicalist = {
 				can_be_randomly_selected = no
-
+				color = { 227 6 19 }
 			}
 			eco_socialist = {}
+
+			market_socialist = {}
+
+			christian_socialist = {
+				can_be_randomly_selected = no
+				# Lock to christian nations
+			}
+
+			buddhist_socialist = {
+				can_be_randomly_selected = no
+				# Lock to buddhist nations
+			}
+
+			islamic_socialist = {
+				can_be_randomly_selected = no
+				# Lock to islamic nations
+			}
 		}
 
 		color = { 153 0 0 }
@@ -232,13 +255,15 @@ ideologies = {
 			agrarianist = {}
 
 			centrist = {}
-			eco_agrarianist = {}
+
 			third_way = {}
 
 			georgism = {
 				can_be_randomly_selected = no
 
 			}
+
+			eco_agrarianist = {}
 		}
 		color = { 0 102 51 }
 		rules = {
@@ -288,14 +313,14 @@ ideologies = {
 
 			consequential_libertarian = {}
 
-			naturalist_libertarian = {
+			natural_rights_libertarian = {
 				can_be_randomly_selected = no
 
 			}
 
 			technolibertarian = {}
 
-			eco_libertarian = {}
+			enviromentalist = {}
 		}
 		color = { 127 0 255 }
 		rules = {
@@ -336,18 +361,13 @@ ideologies = {
 	conservatism = {
 		types = {
 			conservatives = {}
-
 			liberal_conservatives = {}
-			libertarian_conservatives = {
-				can_be_randomly_selected = no
-
-			}
+			libertarian_conservatives = {}
 			islamist_conservatives = {
 				color = { 76 153 0 }
 			}
-			national_conservatives = {
-
-			}
+			national_conservatives = {}
+			green_conservatives = {}
 		}
 		color = { 0 0 255 }
 		rules = {
@@ -440,8 +460,8 @@ ideologies = {
 			nationalist = {}
 
 			nazi = {
+				# Save for specific nations only, i.e Germany
 				can_be_randomly_selected = no
-
 			}
 
 			neo_nazi = {}
@@ -450,18 +470,19 @@ ideologies = {
 
 			zionist = {
 				can_be_randomly_selected = no
-
-
+				# Israel only
 				color = { 0 0 102 }
 			}
 
 			jihadist = {
 				can_be_randomly_selected = no
-
+				# Can only be used by Islamist nations
 				color = { 0 0 0 }
 			}
 
-			eco_nationalist = {}
+			ecofascist = {
+				color = { 89 159 0 }
+			}
 		}
 		color = { 199 119 0 }
 		rules = {
@@ -499,25 +520,27 @@ ideologies = {
 		ai_ideology_wanted_units_factor = 1.0
 	}
 
-	monarchism = {
+	autocracy = {
 		types = {
+			# Default to Autocrat for simplicity
+			autocrat = { }
 			caliphate = {
 				color = { 64 64 64 }
 				can_be_randomly_selected = no
-
 			}
 
-			monarchy = {}
+			monarchy = {
+				can_be_randomly_selected = no
+				color = { 192 192 192 }
+			}
 
 			theocracy = {
 				color = { 255 255 255 }
 				can_be_randomly_selected = no
 			}
-			autocrat = {
-				color = { 204 204 255 }
-			}
+
 		}
-		color = { 192 192 192 }
+		color = { 204 204 255 }
 		rules = {
 			can_declare_war_on_same_ideology = yes
 			can_force_government = yes
@@ -552,7 +575,4 @@ ideologies = {
 		can_be_boosted = yes
 		ai_ideology_wanted_units_factor = 1.0
 	}
-
-
-
 }

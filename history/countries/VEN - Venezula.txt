@@ -277,16 +277,16 @@ capital = 875
 
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 0
+		socialism = 100
+		social_democracy = 0
+		liberalism = 0
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 0
+		populism = 0
+		nationalism = 0
+		autocracy = 0
 	}
 	#set_popularities = {
 		##democratic = 37.0
@@ -315,7 +315,7 @@ capital = 875
 	create_country_leader = {
 		name = "Hugo Chávez"
 		picture = "hugo_chavez.dds"
-		ideology = anarchist_communism
+		ideology = radical_socialist
 		traits = {
 			emerging_anarchist_communism
 			military_career

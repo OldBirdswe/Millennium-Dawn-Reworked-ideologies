@@ -281,16 +281,16 @@ capital = 504
 
 	###BRM###
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 2
+		socialism = 0
+		social_democracy = 0
+		liberalism = 0
+		agrarianism = 0
+		libertarianism = 61
+		conservatism = 4
+		populism = 0
+		nationalism = 33
+		autocracy = 0
 	}
 	#set_popularities = {
 		###democratic = 0.0
@@ -300,7 +300,7 @@ capital = 504
 		###nationalist = 33
 	###}
 	set_politics = {
-		ruling_party = nationalist
+		ruling_party = nationalism
 		last_election = "1999.11.8"
 		election_frequency = 60
 		elections_allowed = no

@@ -729,16 +729,16 @@ capital = 598
 	reverse_add_opinion_modifier = { target = PAU modifier = recognize_taiwan }
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 0.5
+		socialism = 3
+		social_democracy = 4.69
+		liberalism = 31.13
+		agrarianism = 1
+		libertarianism = 1.45
+		conservatism = 46.43
+		populism = 3.74
+		nationalism = 7.06
+		autocracy = 1
 	}
 	#set_popularities = {
 		##democratic = 62.9
@@ -748,7 +748,7 @@ capital = 598
 		##nationalist = 0.0
 	##}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = conservatism
 		last_election = "1996.3.23"
 		election_frequency = 48
 		elections_allowed = yes
@@ -794,7 +794,7 @@ capital = 598
 	create_country_leader = {
 		name = "Lee Teng-hui"
 		picture = "Lee_Teng-hui.dds"
-		ideology = conservatism
+		ideology = conservatives
 		traits = {
 			western_conservatism
 			pro_american

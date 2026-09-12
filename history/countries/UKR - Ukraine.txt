@@ -1002,16 +1002,16 @@ capital = 698
 
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 18
+		socialism = 13
+		social_democracy = 7
+		liberalism = 12
+		agrarianism = 2.5
+		libertarianism = 2.5
+		conservatism = 10
+		populism = 28
+		nationalism = 7
+		autocracy = 0
 	}
 	#set_popularities = {
 		##democratic = 21
@@ -1021,7 +1021,7 @@ capital = 698
 		##nationalist = 7
 	##}
 	set_politics = {
-		ruling_party = communism
+		ruling_party = populism
 		last_election = "1999.10.31"
 		election_frequency = 60
 		elections_allowed = yes
@@ -1045,7 +1045,7 @@ capital = 698
 	create_country_leader = {
 		name = "Leonid Kuchma"
 		picture = "gfx/leaders/UKR/Leonid_Kuchma.dds"
-		ideology = Conservative
+		ideology = oligarchy
 		traits = {
 			emerging_Conservative
 			ruthless

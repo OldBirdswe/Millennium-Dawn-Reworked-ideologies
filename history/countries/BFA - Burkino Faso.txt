@@ -157,16 +157,16 @@ capital = 350
 	set_variable = { overall_productivity = 747 }
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 11.3
+		socialism = 6.8
+		social_democracy = 13.5
+		liberalism = 7.4
+		agrarianism = 1
+		libertarianism = 0
+		conservatism = 0
+		populism = 9.4
+		nationalism = 50.6
+		autocracy = 0
 	}
 	#set_popularities = {
 		###democratic = 19.5
@@ -176,7 +176,7 @@ capital = 350
 		###nationalist = 60.0
 	###}
 	set_politics = {
-		ruling_party = nationalist
+		ruling_party = nationalism
 		last_election = "1998.3.30"
 		election_frequency = 48
 		elections_allowed = yes
@@ -200,7 +200,7 @@ capital = 350
 	create_country_leader = {
 		name = "Blaise Compaore"
 		picture = "blaise_compaore.dds"
-		ideology = Nat_Autocracy
+		ideology = fascist
 		traits = {
 			nationalist_Nat_Autocracy
 			military_career

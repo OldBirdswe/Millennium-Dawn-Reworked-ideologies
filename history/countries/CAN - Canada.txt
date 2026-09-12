@@ -987,16 +987,16 @@ capital = 763
 	reverse_add_opinion_modifier = { target = MEX modifier = NAFTA }
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 0
+		socialism = 7
+		social_democracy = 14.7
+		liberalism = 51.7
+		agrarianism = 20
+		libertarianism = 0
+		conservatism = 6.7
+		populism = 0
+		nationalism = 0
+		autocracy = 0
 	}
 	#set_popularities = {
 		###democratic = 65.35
@@ -1006,7 +1006,7 @@ capital = 763
 		###nationalist = 0
 	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = liberalism
 		last_election = "1997.6.2"
 		election_frequency = 48
 		elections_allowed = yes
@@ -1032,7 +1032,7 @@ capital = 763
 	create_country_leader = {
 		name = "Jean Chrétien"
 		picture = "jean_chretien.dds"
-		ideology = liberalism
+		ideology = social_liberal
 		traits = {
 			western_liberalism
 			career_politician

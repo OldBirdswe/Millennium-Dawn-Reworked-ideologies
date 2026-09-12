@@ -154,16 +154,16 @@ capital = 344
 
 	###BEN###
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 0
+		socialism = 7
+		social_democracy = 45
+		liberalism = 27
+		agrarianism = 1
+		libertarianism = 13
+		conservatism = 7
+		populism = 0
+		nationalism = 0
+		autocracy = 0
 	}
 	#set_popularities = {
 		###democratic = 77.0
@@ -173,7 +173,7 @@ capital = 344
 		###nationalist = 0.0
 	###}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = social_democracy
 		last_election = "1996.3.18"
 		election_frequency = 60
 		elections_allowed = yes
@@ -194,7 +194,7 @@ capital = 344
 	create_country_leader = {
 		name = "Mathieu Kerekou"
 		picture = "mathieu_kerekou.dds"
-		ideology = socialism
+		ideology = social_democrat
 		traits = {
 			western_socialism
 		}

@@ -1809,16 +1809,16 @@ capital = 81
 		complete_special_project = sp:sp_medium_naval_nuclear_engines
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 2.8
+		socialism = 1.7
+		social_democracy = 34.6
+		liberalism = 15.9
+		agrarianism = 7.5
+		libertarianism = 4.5
+		conservatism = 19.1
+		populism = 13.8
+		nationalism = 0.1
+		autocracy = 0
 	}
 	#set_popularities = {
 		##democratic = 69.6
@@ -1828,7 +1828,7 @@ capital = 81
 		##nationalist = 13.9
 	##}
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = social_democracy
 		last_election = "1996.4.21"
 		election_frequency = 60
 		elections_allowed = yes
@@ -1859,7 +1859,7 @@ capital = 81
 	create_country_leader = {
 		name = "Massimo D'Alema"
 		picture = "massimo_alema.dds"
-		ideology = socialism
+		ideology = social_democrat
 		traits = {
 			western_socialism
 			writer

@@ -292,16 +292,16 @@ capital = 153
 	set_variable = { var = int_investments value = 4.3 }
 
 	set_popularities = {
-		communism = 10.0
-		socialism = 10.0
-		social_democracy = 10.0
-		liberalism = 10.0
-		agrarianism = 10.0
-		libertarianism = 10.0
-		conservatism = 10.0
-		populism = 10.0
-		nationalism = 10.0
-		monarchism = 10.0
+		communism = 7
+		socialism = 0
+		social_democracy = 40
+		liberalism = 3
+		agrarianism = 0
+		libertarianism = 0
+		conservatism = 0
+		populism = 5
+		nationalism = 5
+		autocracy = 10
 	}
 	#set_popularities = {
 		###democratic = 73.0
@@ -336,7 +336,7 @@ capital = 153
 	create_country_leader = {
 		name = "Petar Stoyanov"
 		picture = "petar_stoyanov.dds"
-		ideology = conservatism
+		ideology = conservatives
 		traits = {
 			western_conservatism
 		}
